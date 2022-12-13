@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, SafeAreaView, Button, TouchableOpacity} from 'react-native'
+import { View, Text, StyleSheet, SafeAreaView, Button, TouchableOpacity, KeyboardAvoidingView} from 'react-native'
 import React, { useState } from 'react'
 import SignupInput from '../utils/SignupInput'
 import { ProgressSteps, ProgressStep } from 'react-native-progress-steps';
@@ -134,6 +134,7 @@ export default function SignupScreen({navigation}) {
   let buttonTextStyle = { backgroundColor: '#2A9D8F', fontSize: 18, color: 'white', padding: 10,}
 
   return (
+    <KeyboardAvoidingView style={{flex: 1}} behavior={Platform.OS === "ios" ? "padding" : "height"}>
   <SafeAreaView style={styles.container}>
     
     <Button title='Retour' onPress={() =>  navigation.goBack()}></Button>
@@ -202,6 +203,7 @@ export default function SignupScreen({navigation}) {
 
     </ProgressSteps>
   </SafeAreaView>
+  </KeyboardAvoidingView>
   )
 }
 

@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image, SafeAreaView, Button } from 'react-native'
+import { View, Text, StyleSheet, Image, SafeAreaView, Button, KeyboardAvoidingView } from 'react-native'
 import React, { useState } from 'react'
 import ProfileButton from '../utils/ProfileButton';
 import ProfileInput from '../utils/ProfileInput';
@@ -51,7 +51,7 @@ export default function ProfileScreen({navigation}) {
 
   if(!artist.token) {
     return (
-
+      <KeyboardAvoidingView style={{flex: 1}} behavior={Platform.OS === "ios" ? "padding" : "height"}>
       <SafeAreaView style={styles.container}>
         <Image style={styles.logo} source={require('../assets/logo.png')}/>
         <Text style={styles.title}>Trouve ton artiste</Text>
@@ -64,7 +64,9 @@ export default function ProfileScreen({navigation}) {
           <Text style={styles.signupButton}> Pas encore de compte ?</Text>
           <ProfileButton function={redirect} text="Inscription"></ProfileButton>
         </View>
-      </SafeAreaView>
+        </SafeAreaView>
+      </KeyboardAvoidingView>
+     
     )
   }
 
