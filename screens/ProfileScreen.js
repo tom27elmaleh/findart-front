@@ -26,7 +26,7 @@ export default function ProfileScreen({navigation}) {
   };
 
   const loginPressed = () => {
-    fetch('http://192.168.10.210:3000/artists/signin', {
+    fetch('http://192.168.1.17:3000/artists/signin', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ 
@@ -49,6 +49,8 @@ export default function ProfileScreen({navigation}) {
     dispatch(logout());
   }
 
+  // SI PAS CONNECTER 
+
   if(!artist.token) {
     return (
       <KeyboardAvoidingView style={{flex: 1}} behavior={Platform.OS === "ios" ? "padding" : "height"}>
@@ -69,6 +71,9 @@ export default function ProfileScreen({navigation}) {
      
     )
   }
+
+
+// SI CONNECTER 
 
 return (
   <SafeAreaView style={styles.container}>
