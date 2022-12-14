@@ -88,13 +88,6 @@ return (
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-<<<<<<< HEAD
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "red",
-  },
-});
-=======
     alignItems: 'center',
   },
   logo: {
@@ -120,4 +113,3 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 })
->>>>>>> main
