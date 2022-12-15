@@ -11,7 +11,7 @@ export default function ArtistDetails({route}) {
     return (
     <SafeAreaView style={styles.container}>
         <View style={styles.profilePic}>
-        <Image source={{ uri: `https://findart-back.vercel.app/assets/magicien.jpg`}} style={styles.iconArtist}/>     
+        <Image source={{ uri: `http://192.168.1.17:3000/assets/magicien.jpg`}} style={styles.iconArtist}/>     
             <Text style={styles.name}>{route.params.username}</Text>
         </View>
         <View style={styles.typeCity}>

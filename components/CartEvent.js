@@ -6,7 +6,7 @@ export default function Event() {
   const [event, setEvent] = useState([]);
 
   useEffect(() => {
-    fetch("https://findart-back.vercel.app/events")
+    fetch("http://192.168.1.17:3000/events")
       .then((response) => response.json())
       .then((data) => {
         setEvent(data.allEvent);

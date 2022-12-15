@@ -9,7 +9,7 @@ export default function ExplorerScreen() {
 
 
   useEffect(() => {
-    fetch('https://findart-back.vercel.app/artists')
+    fetch('http://192.168.1.17:3000/artists')
     .then(response => response.json())
     .then(data => {
       console.log(data.artistsData);
