@@ -23,7 +23,7 @@ export default function LoggedProfile() {
         <SafeAreaView style={styles.container}>
             <View style={styles.header}>
                 <View style={styles.infoUser}>
-                    <Image style={styles.profilePicture} source={require('../assets/logo.png')}/>
+                    <Image style={styles.profilePicture} source={{ uri: `http://192.168.1.17:3000/assets/logo.png` }}/>
                     <Text style={styles.username}>{artist.username}</Text>
                 </View>
                 <Button title='Deconnexion' onPress={() => logoutPressed()}></Button>

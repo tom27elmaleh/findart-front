@@ -8,7 +8,7 @@ export default function ArtistProfileScreen() {
     <SafeAreaView style={styles.container}>
         <View style={styles.header}>
             <Text style={styles.title}>Informations profil</Text>
-            <Image style={styles.profilePicture} source={require('../assets/logo.png')}/>
+            <Image style={styles.profilePicture} source={{ uri: `http://192.168.1.17:3000/assets/logo.png` }}/>
         </View>
         <ArtistProfileRow title="Pseudo"></ArtistProfileRow>
     </SafeAreaView>

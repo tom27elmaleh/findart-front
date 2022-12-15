@@ -12,7 +12,6 @@ export default function ExplorerScreen() {
     fetch('http://192.168.1.17:3000/artists')
     .then(response => response.json())
     .then(data => {
-      console.log(data.artistsData);
       setArtistData(data.artistsData);
     });
     

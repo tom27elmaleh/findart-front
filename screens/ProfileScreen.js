@@ -27,7 +27,7 @@ export default function ProfileScreen({navigation}) {
   };
 
   const loginPressed = () => {
-    fetch('http://172.20.10.2:3000/artists/signin', {
+    fetch('http://192.168.1.17:3000/artists/signin', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ 
