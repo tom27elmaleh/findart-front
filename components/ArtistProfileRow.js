@@ -4,14 +4,20 @@ import { Icon } from '@rneui/themed';
 
 
 export default function ArtistProfileRow(props) {
+
+  let marginSeparation = props.separation ? 20 : 0;
+
   return (
-    
-    <TouchableOpacity style={styles.container} onPress={() => props.function()}>
+    <TouchableOpacity style={[styles.container, {marginBottom: marginSeparation}]} onPress={() => props.function()}>
+      <View>
         <Text style={styles.title}>{props.title}</Text>
+        <Text style={styles.value}>{props.value}</Text>
+      </View>
         <Icon name='arrow-right' />
     </TouchableOpacity>
     
   )
+
 }
 
 const styles = StyleSheet.create({
@@ -20,13 +26,18 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         paddingHorizontal: 30,
-        borderBottomColor: 'gray',
+        borderBottomColor: 'rgb(216, 214, 214)',
         borderBottomWidth: 1,
-        paddingBottom: 30,
-        marginTop: 30,
+        paddingVertical: 10,
+        backgroundColor: 'white',
     },
     title: {
-        fontSize: 23,
+        fontSize: 19,
+        color: 'gray',
+        marginBottom: 7,
     },
+    value: {
+      fontSize: 19,
+    }
   });
   
