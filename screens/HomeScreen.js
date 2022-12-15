@@ -1,21 +1,25 @@
-import { View, Text, StyleSheet } from 'react-native'
-import React from 'react'
+import {
+  View,
+  Text,
+  StyleSheet,
+  SafeAreaView,
+  Platform,
+  StatusBar,
+} from "react-native";
+import React from "react";
+import Categorie from "../components/Categorie";
 
 export default function HomeScreen() {
   return (
-    <View style={styles.container}>
-      <Text>HomeScreen</Text>
-    </View>
-  )
+    <SafeAreaView style={styles.container}>
+      <Categorie />
+    </SafeAreaView>
+  );
 }
 
-const styles = StyleSheet.create ({
-
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'blue',
-    }
-
-})
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+  },
+});
