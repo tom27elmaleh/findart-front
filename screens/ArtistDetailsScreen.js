@@ -1,15 +1,12 @@
-import { View, Text, StyleSheet, SafeAreaView, Image, ScrollView } from 'react-native'
+import { View, Text, StyleSheet, SafeAreaView, Image, ScrollView, TouchableOpacity } from 'react-native'
 import React from 'react'
 import FontAwesome from 'react-native-vector-icons/MaterialIcons';
 import Tags from '../utils/Tags';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import Description from './Description'
-import Liens from './Liens'
-
-const Tab = createMaterialTopTabNavigator();
+import { useState } from 'react';
 
 export default function ArtistDetails({route}) {
-    console.log('LE console log route params =>', route.params)
+// Etat mis en place pour passer de la description aux médias
+    const [infos, setInfos] = useState('description');
 
     return (
     <SafeAreaView style={styles.container}>
@@ -28,10 +25,17 @@ export default function ArtistDetails({route}) {
         </View>
         {/* NavTab description & links */}
         <View style={styles.navContainer}>
-            <Tab.Navigator>
-                <Tab.Screen name="Bio" component={Description}/>
-                <Tab.Screen name="Liens" component={Liens}/>
-            </Tab.Navigator>
+            <TouchableOpacity onPress={() => setInfos('description')} >
+                <Text style={styles.btnNav}>Bio</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setInfos('link')} >
+                <Text style={styles.btnNav}  >Médias</Text>
+            </TouchableOpacity>
+        </View>
+        <View style={styles.navContent}>
+            <Text>
+                {infos === 'description' ? route.params.description : route.params.link}
+            </Text>
         </View>
         {/* DIVIDER : code à revoir */}
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
@@ -110,10 +114,20 @@ const styles = StyleSheet.create({
     },
     navContainer: {
         backgroundColor: 'beige',
-        width: '100%',
-        height: '25%',
+        width: '90%',
+        height: '5%',
         margin: 20,
+        flexDirection: 'row',
+        justifyContent: 'space-around'
     }, 
+    btnNav: {
+        fontSize: 30,
+        fontWeight: 'bold'
+    },
+    navContent: {
+        marginLeft: 30,
+        marginBottom: 10
+    },
     infos: {
         margin: 20
     }, 
