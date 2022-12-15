@@ -6,8 +6,11 @@ import { useFonts } from "expo-font";
 export default function CartCategorie(props) {
   return (
     <View style={styles.containerImg}>
-      <Image source={props.img} style={styles.Img} />
-      <Text>{props.title}</Text>
+      <Image
+        source={{ uri: `http://192.168.1.14:3000/assets/${props.image}` }}
+        style={styles.Img}
+      />
+      <Text>{props.name}</Text>
     </View>
   );
 }
@@ -20,6 +23,7 @@ const styles = StyleSheet.create({
     marginRight: 20,
     marginLeft: 10,
     borderColor: "black",
+    borderWidth: 1,
   },
   Img: {
     width: 120,

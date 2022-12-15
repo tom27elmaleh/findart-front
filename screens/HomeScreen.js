@@ -8,11 +8,13 @@ import {
 } from "react-native";
 import React from "react";
 import Categorie from "../components/Categorie";
+import CartEvent from "../components/CartEvent";
 
 export default function HomeScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <Categorie />
+      <CartEvent />
     </SafeAreaView>
   );
 }
