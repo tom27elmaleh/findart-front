@@ -1,34 +1,25 @@
 import { View, Image, Text, StyleSheet, ScrollView } from "react-native";
-import React from "react";
-import CartCategorie from "../components/CartCategorie";
+import React, { useEffect, useState } from "react";
+import CartCategorie from "./CartCategorie";
 
-export default function Categorie() {
-  const cartData = [
-    {
-      image: "dance.jpg",
-      name: "Danse",
-    },
-    {
-      image: "musiscien.jpg",
-      name: "Musique",
-    },
-    {
-      image: "peintre.jpg",
-      name: "Design",
-    },
-    {
-      image: "photo.jpg",
-      name: "Photo",
-    },
-  ];
+export default function Event() {
+  const [event, setEvent] = useState([]);
 
-  const card = cartData.map((data, i) => {
-    return <CartCategorie key={i} image={data.image} name={data.name} />;
+  useEffect(() => {
+    fetch("http://192.168.1.17:3000/events")
+      .then((response) => response.json())
+      .then((data) => {
+        setEvent(data.allEvent);
+      });
+  }, []);
+
+  const events = event.map((data, i) => {
+    return <CartCategorie key={i} name={data.name} image={data.image} />;
   });
   return (
     <View style={styles.caroussel}>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-        {card}
+        {events}
       </ScrollView>
     </View>
   );

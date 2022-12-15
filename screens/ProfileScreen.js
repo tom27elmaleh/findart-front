@@ -15,15 +15,15 @@ export default function ProfileScreen({navigation}) {
   const artist = useSelector((state) => state.artist.value);
 
   function setEmailFunc(value) {
-    setEmail(value)
+    setEmail(value);
   }
 
   function setPasswordFunc(value) {
-    setPassword(value)
+    setPassword(value);
   }
 
   const redirect = () => {
-   navigation.navigate('Signup');
+    navigation.navigate("Signup");
   };
 
   const loginPressed = () => {
@@ -34,43 +34,68 @@ export default function ProfileScreen({navigation}) {
         email: email, 
         password: password, 
       }),
-		}).then(response => response.json())
-    .then(data => {
-      if(data.result) {
-        setPassword('');
-       dispatch(login({token: data.token, username: data.username, type: data.type}))
-        
-      } else {
-        console.log('wrong id');
-      }
     })
-   };
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.result) {
+          setPassword("");
+          dispatch(
+            login({
+              token: data.token,
+              username: data.username,
+              type: data.type,
+            })
+          );
+        } else {
+          console.log("wrong id");
+        }
+      });
+  };
 
 
 
-  // SI PAS CONNECTER 
+  // SI PAS CONNECTER
 
-  if(!artist.token) {
+  if (!artist.token) {
     return (
-      <KeyboardAvoidingView style={{flex: 1}} behavior={Platform.OS === "ios" ? "padding" : "height"}>
-      <SafeAreaView style={styles.container}>
-        <Image style={styles.logo} source={require('../assets/logo.png')}/>
-        <Text style={styles.title}>Trouve ton artiste</Text>
-        <View style={styles.inputs}>
-          <ProfileInput text="Adresse mail" placeholder="abc@gmail.com" function={setEmailFunc} value={email}></ProfileInput>
-          <ProfileInput text="Mot de passe" placeholder="********"  function={setPasswordFunc} value={password}></ProfileInput>
-        </View>
-        <View style={styles.buttons}>
-          <ProfileButton text="Connexion" function={loginPressed}></ProfileButton>
-          <Text style={styles.signupButton}> Pas encore de compte ?</Text>
-          <ProfileButton function={redirect} text="Inscription"></ProfileButton>
-        </View>
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+      >
+        <SafeAreaView style={styles.container}>
+          <Image style={styles.logo} source={{ uri: `http://192.168.1.17:3000/assets/logo.png` }}/>
+          <Text style={styles.title}>Trouve ton artiste</Text>
+          <View style={styles.inputs}>
+            <ProfileInput
+              text="Adresse mail"
+              placeholder="abc@gmail.com"
+              function={setEmailFunc}
+              value={email}
+            ></ProfileInput>
+            <ProfileInput
+              text="Mot de passe"
+              placeholder="********"
+              function={setPasswordFunc}
+              value={password}
+            ></ProfileInput>
+          </View>
+          <View style={styles.buttons}>
+            <ProfileButton
+              text="Connexion"
+              function={loginPressed}
+            ></ProfileButton>
+            <Text style={styles.signupButton}> Pas encore de compte ?</Text>
+            <ProfileButton
+              function={redirect}
+              text="Inscription"
+            ></ProfileButton>
+          </View>
         </SafeAreaView>
       </KeyboardAvoidingView>
-     
-    )
+    );
   }
 
+  // SI CONNECTER
 
 // SI CONNECTER 
 
@@ -84,22 +109,22 @@ export default function ProfileScreen({navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: "center",
   },
   logo: {
-    height: '30%',
-    width: '60%',
+    height: "30%",
+    width: "60%",
     marginTop: 20,
   },
   title: {
-    fontWeight: '600',
-    fontSize: '25px',
+    fontWeight: "600",
+    fontSize: "25px",
     marginTop: 20,
-  }, 
+  },
   inputs: {
-    alignItems: 'center',
+    alignItems: "center",
     marginTop: 20,
-    width: '100%',
+    width: "100%",
   },
   buttons: {
     marginTop: 20,
@@ -108,4 +133,4 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 5,
   },
-})
+});

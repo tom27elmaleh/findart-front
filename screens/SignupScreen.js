@@ -84,7 +84,7 @@ export default function SignupScreen({navigation}) {
   }
 
   function setFormatPhotoFunc(value) {
-    setPackageRate(value)
+    setFormatPhoto(value)
   }
 
   const onNextStep = () => {
@@ -169,9 +169,9 @@ export default function SignupScreen({navigation}) {
             style={{ height: 30, width: '85%'}}
             onValueChange={(itemValue, itemIndex) => setSelectedType(itemValue)}
           >
-        <Picker.Item label="Musique" value="Musique" />
-        <Picker.Item label="Dance" value="Dance" />
-        <Picker.Item label="Photo" value="Photo" />
+            <Picker.Item label="Musique" value="Musique" />
+            <Picker.Item label="Dance" value="Dance" />
+            <Picker.Item label="Photo" value="Photo" />
           </Picker>
        
       </View>
