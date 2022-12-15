@@ -33,7 +33,7 @@ export default function ProfileScreen({ navigation }) {
   };
 
   const loginPressed = () => {
-    fetch("http://192.168.1.17:3000/artists/signin", {
+    fetch("https://findart-back.vercel.app/artists/signin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
