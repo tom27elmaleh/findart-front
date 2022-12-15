@@ -3,7 +3,8 @@ import React, { useState } from 'react'
 import ProfileButton from '../utils/ProfileButton';
 import ProfileInput from '../utils/ProfileInput';
 import { useDispatch, useSelector } from 'react-redux';
-import { login, logout } from '../reducers/artist';
+import { login } from '../reducers/artist';
+import LoggedProfile from '../components/LoggedProfile';
 
 export default function ProfileScreen({navigation}) {
 
@@ -26,7 +27,7 @@ export default function ProfileScreen({navigation}) {
   };
 
   const loginPressed = () => {
-    fetch('http://192.168.1.17:3000/artists/signin', {
+    fetch('http://172.20.10.2:3000/artists/signin', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ 
@@ -45,9 +46,7 @@ export default function ProfileScreen({navigation}) {
     })
    };
 
-  function logoutPressed() {
-    dispatch(logout());
-  }
+
 
   // SI PAS CONNECTER 
 
@@ -75,11 +74,8 @@ export default function ProfileScreen({navigation}) {
 
 // SI CONNECTER 
 
-return (
-  <SafeAreaView style={styles.container}>
-    <Text> Hello {artist.username}</Text>
-    <Button title='Deconnexion' onPress={() => logoutPressed()}></Button>
-  </SafeAreaView>
+  return (
+    <LoggedProfile/>
   )
 
 

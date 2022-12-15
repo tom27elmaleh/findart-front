@@ -7,8 +7,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from './screens/HomeScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import ExplorerScreen from './screens/ExplorerScreen';
-
 import SignupScreen from './screens/SignupScreen';
+import ArtistProfileScreen from './screens/ArtistProfileScreen';
 
 import { Provider } from 'react-redux';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
@@ -18,6 +18,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import artist from './reducers/artist';
+
 
 const reducers = combineReducers({ artist });
 
@@ -52,6 +53,7 @@ export default function App() {
      <Stack.Navigator screenOptions={{ headerShown: false }}>
        <Stack.Screen name="TabNavigator" component={TabNavigator} />
        <Stack.Screen name="Signup" component={SignupScreen} />
+       <Stack.Screen name="ArtistProfile" component={ArtistProfileScreen} />
      </Stack.Navigator>
    </NavigationContainer>
    </PersistGate>
