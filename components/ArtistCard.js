@@ -18,7 +18,7 @@ return (
             <View style={styles.identity}>
                 <View style={styles.picName}>
                     <View>
-                        <Image source={require('../assets/ex.jpg')} style={styles.iconArtist}/>
+                        <Image source={{ uri: `https://findart-back.vercel.app/assets/magicien.jpg`}} style={styles.iconArtist}/>                    
                     </View>
                     <View>
                         <Text style={styles.name} >{props.username}</Text>

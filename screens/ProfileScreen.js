@@ -71,7 +71,7 @@ export default function ProfileScreen({ navigation }) {
         behavior={Platform.OS === "ios" ? "padding" : "height"}
       >
         <SafeAreaView style={styles.container}>
-          {/* <Image style={styles.logo} source={require('../assets/logo.png')}/> */}
+          <Image style={styles.logo} source={{ uri: `https://findart-back.vercel.app/assets/logo.png` }}/>
           <Text style={styles.title}>Trouve ton artiste</Text>
           <View style={styles.inputs}>
             <ProfileInput

@@ -84,7 +84,7 @@ export default function SignupScreen({navigation}) {
   }
 
   function setFormatPhotoFunc(value) {
-    setPackageRate(value)
+    setFormatPhoto(value)
   }
 
   const onNextStep = () => {
