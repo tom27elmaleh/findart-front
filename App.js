@@ -7,6 +7,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from './screens/HomeScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import ExplorerScreen from './screens/ExplorerScreen';
+import ArtistDetailsScreen from './screens/ArtistDetailsScreen';
+// import ArtistCard from './components/ArtistCard';
 
 import SignupScreen from './screens/SignupScreen';
 
@@ -51,6 +53,7 @@ export default function App() {
    <NavigationContainer>
      <Stack.Navigator screenOptions={{ headerShown: false }}>
        <Stack.Screen name="TabNavigator" component={TabNavigator} />
+       <Stack.Screen name="ArtistDetails" component={ArtistDetailsScreen}/>
        <Stack.Screen name="Signup" component={SignupScreen} />
      </Stack.Navigator>
    </NavigationContainer>
