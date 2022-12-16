@@ -23,6 +23,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import artist from './reducers/artist';
 
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+
 const reducers = combineReducers({ artist });
 
 const persistConfig = { key: "findart", storage: AsyncStorage };
@@ -39,10 +41,27 @@ const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
  return (
-   <Tab.Navigator screenOptions={{ headerShown: false }}>
+   <Tab.Navigator screenOptions={({route}) => ({
+    tabBarIcon: ({color, size}) => {
+      let iconName = '';
+      if(route.name === "Home"){
+        iconName = 'home';
+      }else if(route.name === "Explorer"){
+        iconName = 'compass'
+      }else if(route.name === "Profil"){
+        iconName = 'account-circle'
+      }
+      return <MaterialCommunityIcons name={iconName} size={size} color={color}/>
+    },
+    tabBarActiveTintColor: '#ffffff',
+    tabBarInactiveTintColor: 'gray',
+    headerShown: false,
+    tabBarStyle: {backgroundColor: '#264653', height: 100, borderTopEndRadius: 30, borderTopStartRadius: 30}
+
+   })}>
      <Tab.Screen name="Home" component={HomeScreen} /> 
      <Tab.Screen name="Explorer" component={ExplorerScreen} />
-     <Tab.Screen name="Profile" component={ProfileScreen} />
+     <Tab.Screen name="Profil" component={ProfileScreen} />
    </Tab.Navigator>
  );
 }

@@ -35,14 +35,14 @@ export default function ArtistCategoryScreen({route}) {
         fetch('http://192.168.1.73:3000/artists/design')
         .then(response => response.json())
         .then(data => {
-          console.log( 'les designers =>', data.designersData);
+        //   console.log( 'les designers =>', data.designersData);
           setDesignData(data.designersData);
         });
     }else if(route.params.type === "Photo"){
         fetch('http://192.168.1.73:3000/artists/photo')
         .then(response => response.json())
         .then(data => {
-            console.log('les photographes =>', data.photographsData);
+            // console.log('les photographes =>', data.photographsData);
             setPhotoData(data.photographsData);
         })
     }
