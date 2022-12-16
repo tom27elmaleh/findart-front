@@ -9,7 +9,7 @@ export default function ExplorerScreen() {
 
 
   useEffect(() => {
-    fetch('http://192.168.1.17:3000/artists')
+    fetch('http://192.168.1.73:3000/artists')
     .then(response => response.json())
     .then(data => {
       console.log(data.artistsData);
@@ -58,7 +58,7 @@ const styles = StyleSheet.create ({
   },
   scrollView: {
     // alignItems: 'flex-end',
-    // padding: 50,
+    
   },
   headerContainer: {
     backgroundColor: '#264653',

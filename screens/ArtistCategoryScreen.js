@@ -1,0 +1,123 @@
+import { SafeAreaView, Text, StyleSheet, ScrollView, View } from 'react-native'
+import React, { useEffect, useState } from 'react';
+import ArtistCard from '../components/ArtistCard';
+
+
+export default function ArtistCategoryScreen({route}) {
+
+    const [musicData, setMusicData] = useState([]);
+    const [danseData, setDanseData] = useState([]);
+    const [designData, setDesignData] = useState([]);
+    const [photoData, setPhotoData] = useState([]);
+
+    
+    console.log('route params type =>',route.params.type)
+
+
+  useEffect(() => {
+    if(route.params.type === "Musique"){
+        fetch('http://192.168.1.73:3000/artists/music')
+        .then(response => response.json())
+        .then(data => {
+        //   console.log(data.musiciansData);
+          setMusicData(data.musiciansData);
+        });
+
+    }else if(route.params.type === "Danse"){
+        fetch('http://192.168.1.73:3000/artists/danse')
+        .then(response => response.json())
+        .then(data => {
+        //   console.log(data.dancersData);
+          setDanseData(data.dancersData);
+        });
+
+    }else if(route.params.type === "Design"){
+        fetch('http://192.168.1.73:3000/artists/design')
+        .then(response => response.json())
+        .then(data => {
+          console.log( 'les designers =>', data.designersData);
+          setDesignData(data.designersData);
+        });
+    }else if(route.params.type === "Photo"){
+        fetch('http://192.168.1.73:3000/artists/photo')
+        .then(response => response.json())
+        .then(data => {
+            console.log('les photographes =>', data.photographsData);
+            setPhotoData(data.photographsData);
+        })
+    }
+    
+  }, []);
+  
+  const musicians = musicData.map((data, i) =>{
+    return (
+      <ArtistCard key={i} username={data.username} city={data.address.city} type={data.type} rate={data.rate.hourly} dailyRate={data.rate.package}  style={data.style} event={data.event.name} description={data.description} link={data.link} instrument={data.instrument}/>
+    )
+
+  });
+
+  const dancers = danseData.map((data, j) =>{
+    return (
+      <ArtistCard key={j} username={data.username} city={data.address.city} type={data.type} rate={data.rate.hourly} dailyRate={data.rate.package}  style={data.style} event={data.event.name} description={data.description} link={data.link}/>
+    )
+
+  }); 
+
+//   const designers = designData.map((data, k) => {
+//     return(
+//         <ArtistCard key={k} username={data.username} city={data.address.city} type={data.type} rate={data.rate.hourly} dailyRate={data.rate.package}  style={data.style} event={data.event.name} description={data.description} link={data.link}/>
+//     )
+//   })
+
+  const designers = designData.map((data, k) =>{
+    return (
+      <ArtistCard key={k} username={data.username} city={data.address.city} type={data.type} rate={data.rate.hourly} dailyRate={data.rate.package}  style={data.style} event={data.event.name} description={data.description} link={data.link}/>
+    )
+
+  });
+
+  const photographs = photoData.map((data, i) => {
+    return (
+        <ArtistCard key={i} username={data.username} city={data.address.city} type={data.type} rate={data.rate.hourly} dailyRate={data.rate.package}  style={data.style} event={data.event.name} description={data.description} link={data.link} />
+      )
+  })
+
+  return (
+    
+    
+    <SafeAreaView style={styles.container}>
+      <View style={styles.headerContainer}>
+        <Text style={styles.header}>Results</Text>
+
+      </View>
+      <ScrollView contentContainerStyle={styles.scrollView}>
+        { route.params.type === 'Danse' ? dancers : route.params.type === 'Musique' ? musicians : route.params.type === 'Photo' ? photographs :  route.params.type ==='Design' ? designers : <></>} 
+      </ScrollView>
+        
+    </SafeAreaView>
+      
+  )
+}
+
+const styles = StyleSheet.create ({
+
+  container: {
+    flex: 1,
+    // justifyContent: 'center',
+    // alignItems: 'flex-start',
+    // backgroundColor: 'yellow',
+},
+  header: {
+    textAlign: 'center',
+    color: 'white',
+    fontWeight: 'bold'
+  },
+  scrollView: {
+    // alignItems: 'flex-end',
+    
+  },
+  headerContainer: {
+    backgroundColor: '#264653',
+    padding: 30
+  }
+})

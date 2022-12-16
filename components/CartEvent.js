@@ -1,12 +1,16 @@
-import { View, Image, Text, StyleSheet, ScrollView } from "react-native";
+import { View, Image, Text, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import React, { useEffect, useState } from "react";
 import CartCategorie from "./CartCategorie";
 
-export default function Event() {
+import { useNavigation } from '@react-navigation/native'; 
+
+export default function Event(props) {
+
+  const navigation = useNavigation();
   const [event, setEvent] = useState([]);
 
   useEffect(() => {
-    fetch("http://192.168.1.17:3000/events")
+    fetch("http://192.168.1.73:3000/events")
       .then((response) => response.json())
       .then((data) => {
         setEvent(data.allEvent);
@@ -14,8 +18,10 @@ export default function Event() {
   }, []);
 
   const events = event.map((data, i) => {
-    return <CartCategorie key={i} name={data.name} image={data.image} />;
+    return <TouchableOpacity key={i} onPress={() => navigation.navigate('Event', props)}><CartCategorie key={i} name={data.name} image={data.image} /></TouchableOpacity>;
   });
+
+
   return (
     <View style={styles.caroussel}>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>

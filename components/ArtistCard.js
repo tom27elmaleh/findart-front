@@ -18,7 +18,7 @@ return (
             <View style={styles.identity}>
                 <View style={styles.picName}>
                     <View>
-                        <Image source={{ uri: `http://192.168.1.17:3000/assets/magicien.jpg`}} style={styles.iconArtist}/>                    
+                        <Image source={{ uri: `http://192.168.1.73:3000/assets/magicien.jpg`}} style={styles.iconArtist}/>                    
                     </View>
                     <View>
                         <Text style={styles.name} >{props.username}</Text>
@@ -45,7 +45,7 @@ return (
 
 const styles = StyleSheet.create({
     container: {
-        height: '35%',
+        height: 200,
         width: "100%",
         marginBottom: 10,
         // paddingLeft: 30,

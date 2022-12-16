@@ -8,7 +8,9 @@ import HomeScreen from './screens/HomeScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import ExplorerScreen from './screens/ExplorerScreen';
 import ArtistDetailsScreen from './screens/ArtistDetailsScreen';
+import ArtistCategoryScreen from './screens/ArtistCategoryScreen';
 // import ArtistCard from './components/ArtistCard';
+import ArtistByEventScreen from './screens/ArtistByEventScreen';
 
 import SignupScreen from './screens/SignupScreen';
 
@@ -54,7 +56,10 @@ export default function App() {
      <Stack.Navigator screenOptions={{ headerShown: false }}>
        <Stack.Screen name="TabNavigator" component={TabNavigator} />
        <Stack.Screen name="ArtistDetails" component={ArtistDetailsScreen}/>
+       <Stack.Screen name="ArtistCategory" component={ArtistCategoryScreen}/>
        <Stack.Screen name="Signup" component={SignupScreen} />
+       <Stack.Screen name="Event" component={ArtistByEventScreen} />
+
      </Stack.Navigator>
    </NavigationContainer>
    </PersistGate>
