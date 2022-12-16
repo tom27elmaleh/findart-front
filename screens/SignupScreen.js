@@ -1,110 +1,116 @@
-import { View, Text, StyleSheet, SafeAreaView, Button, TouchableOpacity, KeyboardAvoidingView} from 'react-native'
-import React, { useState } from 'react'
-import SignupInput from '../utils/SignupInput'
-import { ProgressSteps, ProgressStep } from 'react-native-progress-steps';
-import {Picker} from '@react-native-picker/picker';
-import { useDispatch } from 'react-redux';
-import { login } from '../reducers/artist';
+import {
+  View,
+  Text,
+  StyleSheet,
+  SafeAreaView,
+  Button,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+} from "react-native";
+import React, { useState } from "react";
+import SignupInput from "../utils/SignupInput";
+import { ProgressSteps, ProgressStep } from "react-native-progress-steps";
+import { Picker } from "@react-native-picker/picker";
+import { useDispatch } from "react-redux";
+import { login } from "../reducers/artist";
 
-export default function SignupScreen({navigation}) {
+export default function SignupScreen({ navigation }) {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [country, setCountry] = useState("");
+  const [city, setCity] = useState("");
+  const [postalCode, setPostalCode] = useState("");
 
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
-  const [country, setCountry] = useState('');
-  const [city, setCity] = useState('');
-  const [postalCode, setPostalCode] = useState('');
-
-  const [insta, setInsta] = useState('');
-  const [description, setDescription] = useState('');
-  const [link, setLink] = useState('');
+  const [insta, setInsta] = useState("");
+  const [description, setDescription] = useState("");
+  const [link, setLink] = useState("");
   const [selectedType, setSelectedType] = useState("Musique");
   const [selectedEvent, setSelectedEvent] = useState("weddings");
-  const [hourly, setHourly] = useState('');
-  const [packageRate, setPackageRate] = useState('');
-  const [formatPhoto, setFormatPhoto] = useState('');
-  const [instrument, setInstrument] = useState('');
-  const [styleArt, setStyleArt] = useState('');
- 
+  const [hourly, setHourly] = useState("");
+  const [packageRate, setPackageRate] = useState("");
+  const [formatPhoto, setFormatPhoto] = useState("");
+  const [instrument, setInstrument] = useState("");
+  const [styleArt, setStyleArt] = useState("");
+
   const [isValid, setIsValid] = useState(false);
   const [error, setError] = useState(false);
 
   const dispatch = useDispatch();
 
   function setUsernameFunc(value) {
-    setUsername(value)
+    setUsername(value);
   }
 
   function setEmailFunc(value) {
-    setEmail(value)
+    setEmail(value);
   }
 
   function setCountryFunc(value) {
-    setCountry(value)
+    setCountry(value);
   }
 
   function setPasswordFunc(value) {
-    setPassword(value)
+    setPassword(value);
   }
 
   function setCityFunc(value) {
-    setCity(value)
+    setCity(value);
   }
 
   function setPostalCodeFunc(value) {
-    setPostalCode(value)
+    setPostalCode(value);
   }
 
   function setDescriptionFunc(value) {
-    setDescription(value)
+    setDescription(value);
   }
-  
+
   function setInstaFunc(value) {
-    setInsta(value)
+    setInsta(value);
   }
 
   function setInstrumentFunc(value) {
-    setInstrument(value)
+    setInstrument(value);
   }
 
   function setStyleArtFunc(value) {
-    setStyleArt(value)
+    setStyleArt(value);
   }
 
   function setLinkFunc(value) {
-    setLink(value)
+    setLink(value);
   }
 
   function setHourlyFunc(value) {
-    setHourly(value)
+    setHourly(value);
   }
 
   function setPackageRateFunc(value) {
-    setPackageRate(value)
+    setPackageRate(value);
   }
 
   function setFormatPhotoFunc(value) {
-    setFormatPhoto(value)
+    setFormatPhoto(value);
   }
 
   const onNextStep = () => {
     if (!isValid) {
-     setError(true)
+      setError(true);
     } else {
-      setError(false)
-    } 
+      setError(false);
+    }
   };
 
   const submitForm = () => {
-    
-    fetch('http://192.168.1.17:3000/artists/signup', {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({ 
-        username: username, 
-        email: email, 
-        password: password, 
-        country: country, 
+    fetch("http://192.168.1.17:3000/artists/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: username,
+        email: email,
+        password: password,
+        country: country,
         city: city,
         postalCode: postalCode,
         description: description,
@@ -119,102 +125,219 @@ export default function SignupScreen({navigation}) {
         style: styleArt,
         event: selectedEvent,
       }),
-		}).then(response => response.json())
-    .then(data => {
-      if(data.result) {
-       dispatch(login({token: data.token, username: data.username, type: data.type}))
-        navigation.navigate('TabNavigator')
-      } else {
-        console.log('result false');
-      }
     })
-
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.result) {
+          dispatch(
+            login({
+              token: data.token,
+              username: data.username,
+              type: data.type,
+            })
+          );
+          navigation.navigate("TabNavigator");
+        } else {
+          console.log("result false");
+        }
+      });
   };
 
-  let buttonTextStyle = { backgroundColor: '#2A9D8F', fontSize: 18, color: 'white', padding: 10,}
+  let buttonTextStyle = {
+    backgroundColor: "#2A9D8F",
+    fontSize: 18,
+    color: "white",
+    padding: 10,
+  };
 
   return (
-    <KeyboardAvoidingView style={{flex: 1}} behavior={Platform.OS === "ios" ? "padding" : "height"}>
-  <SafeAreaView style={styles.container}>
-    
-    <Button title='Retour' onPress={() =>  navigation.goBack()}></Button>
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+    >
+      <SafeAreaView style={styles.container}>
+        <Button title="Retour" onPress={() => navigation.goBack()}></Button>
 
-    <ProgressSteps  activeStepNumColor={"#2A9D8F"} completedStepNumColor={"#2A9D8F"} activeLabelColor={"#2A9D8F"} progressBarColor={"#2A9D8F"} completedProgressBarColor={"#2A9D8F"} activeStepIconBorderColor={"#2A9D8F"} completedStepIconColor={"#2A9D8F"} disabledStepIconColor={"#2A9D8F"}>
-
-    {/* FIRST STEP  */}
-    <ProgressStep nextBtnText={'Suivant'} label="Informations personnelles" onNext={() => onNextStep()} nextBtnTextStyle={buttonTextStyle}>
-      <View style={styles.inputs}>
-      <SignupInput text="Adresse mail" placeholder="abc@gmail.com" function={setEmailFunc} value={email}></SignupInput>
-        <SignupInput text="Pseudo" placeholder="username" function={setUsernameFunc} value={username}></SignupInput>
-        <SignupInput text="Pays" placeholder="France" function={setCountryFunc} value={country}></SignupInput>
-        <SignupInput text="Ville" placeholder="Paris" function={setCityFunc} value={city}></SignupInput>
-        <SignupInput text="Code Postal" placeholder="75001" function={setPostalCodeFunc} value={postalCode}></SignupInput>
-        <SignupInput text="Mot de passe" placeholder="********" function={setPasswordFunc} value={password}></SignupInput>
-      </View>
-    </ProgressStep>
-
-    {/* SECOND STEP  */}
-    <ProgressStep previousBtnText={'Précedent'} finishBtnText={"Valider"} label="Description" nextBtnTextStyle={buttonTextStyle} previousBtnTextStyle={buttonTextStyle} >
-      <View style={styles.inputs}>
-        {/* <SignupInput text="Photo de profil" placeholder="a changer en import file" function={setDescriptionFunc} value={description}></SignupInput> */}
-        <SignupInput text="Instagram" placeholder="https://instagram.com" function={setInstaFunc} value={insta}></SignupInput>
-        <SignupInput text="Description" placeholder="Ecrivez votre description" function={setDescriptionFunc} value={description}></SignupInput>
-        <SignupInput text="Lien" placeholder="spotify.fr" function={setLinkFunc} value={link}></SignupInput>
-        
-          <View style={{flexDirection: 'row', width: '85%', alignContent: 'flex-start', marginTop: 10}}>
-          <Text style={{fontSize: 17}}>Catégorie</Text>
-          </View>
-          <Picker
-            selectedValue={selectedType}
-            style={{ height: 30, width: '85%'}}
-            onValueChange={(itemValue, itemIndex) => setSelectedType(itemValue)}
+        <ProgressSteps
+          activeStepNumColor={"#2A9D8F"}
+          completedStepNumColor={"#2A9D8F"}
+          activeLabelColor={"#2A9D8F"}
+          progressBarColor={"#2A9D8F"}
+          completedProgressBarColor={"#2A9D8F"}
+          activeStepIconBorderColor={"#2A9D8F"}
+          completedStepIconColor={"#2A9D8F"}
+          disabledStepIconColor={"#2A9D8F"}
+        >
+          {/* FIRST STEP  */}
+          <ProgressStep
+            nextBtnText={"Suivant"}
+            label="Informations personnelles"
+            onNext={() => onNextStep()}
+            nextBtnTextStyle={buttonTextStyle}
           >
-            <Picker.Item label="Musique" value="Musique" />
-            <Picker.Item label="Dance" value="Dance" />
-            <Picker.Item label="Photo" value="Photo" />
-          </Picker>
-       
-      </View>
-    </ProgressStep>
+            <View style={styles.inputs}>
+              <SignupInput
+                text="Adresse mail"
+                placeholder="abc@gmail.com"
+                function={setEmailFunc}
+                value={email}
+              />
+              <SignupInput
+                text="Pseudo"
+                placeholder="username"
+                function={setUsernameFunc}
+                value={username}
+              />
+              <SignupInput
+                text="Pays"
+                placeholder="France"
+                function={setCountryFunc}
+                value={country}
+              />
+              <SignupInput
+                text="Ville"
+                placeholder="Paris"
+                function={setCityFunc}
+                value={city}
+              />
+              <SignupInput
+                text="Code Postal"
+                placeholder="75001"
+                function={setPostalCodeFunc}
+                value={postalCode}
+              />
+              <SignupInput
+                text="Mot de passe"
+                placeholder="********"
+                function={setPasswordFunc}
+                value={password}
+              />
+            </View>
+          </ProgressStep>
 
-      {/* LAST STEP  */}
-    <ProgressStep previousBtnText={'Précedent'} finishBtnText={"Valider"} label={"Catégorie"} onSubmit={() => submitForm()} nextBtnTextStyle={buttonTextStyle} previousBtnTextStyle={buttonTextStyle} >
-      <View style={styles.inputs}>
-        <SignupInput text="Style" placeholder="Jazz" function={setStyleArtFunc} value={styleArt}></SignupInput>
-        { selectedType === 'Musique' &&
-         <SignupInput text="Instrument" placeholder="Piano" function={setInstrumentFunc} value={instrument}></SignupInput>
-        }
-        { selectedType === 'Photo' &&
-         <SignupInput text="Format de photo" placeholder="Argentique" function={setFormatPhotoFunc} value={formatPhoto}></SignupInput>
-        }
-         <SignupInput text="Prix horaire" placeholder="40" function={setHourlyFunc} value={hourly}></SignupInput>
-         <SignupInput text="Forfait" placeholder="A faire" function={setPackageRateFunc} value={packageRate}></SignupInput>
-         <Picker
-            selectedValue={selectedEvent}
-            style={{ height: 30, width: '85%'}}
-            onValueChange={(itemValue, itemIndex) => setSelectedEvent(itemValue)}
+          {/* SECOND STEP  */}
+          <ProgressStep
+            previousBtnText={"Précedent"}
+            finishBtnText={"Valider"}
+            label="Description"
+            nextBtnTextStyle={buttonTextStyle}
+            previousBtnTextStyle={buttonTextStyle}
           >
-        <Picker.Item label="Mariage" value="weddings" />
-        <Picker.Item label="Cours" value="courses" />
-        <Picker.Item label="Evenement privés" value="privateEvents" />
-          </Picker>
-      </View>
-    </ProgressStep>
+            <View style={styles.inputs}>
+              {/* <SignupInput text="Photo de profil" placeholder="a changer en import file" function={setDescriptionFunc} value={description}/> */}
+              <SignupInput
+                text="Instagram"
+                placeholder="https://instagram.com"
+                function={setInstaFunc}
+                value={insta}
+              />
+              <SignupInput
+                text="Description"
+                placeholder="Ecrivez votre description"
+                function={setDescriptionFunc}
+                value={description}
+              />
+              <SignupInput
+                text="Lien"
+                placeholder="spotify.fr"
+                function={setLinkFunc}
+                value={link}
+              />
 
-    </ProgressSteps>
-  </SafeAreaView>
-  </KeyboardAvoidingView>
-  )
+              <View
+                style={{
+                  flexDirection: "row",
+                  width: "85%",
+                  alignContent: "flex-start",
+                  marginTop: 10,
+                }}
+              >
+                <Text style={{ fontSize: 17 }}>Catégorie</Text>
+              </View>
+              <Picker
+                selectedValue={selectedType}
+                style={{ height: 30, width: "85%" }}
+                onValueChange={(itemValue, itemIndex) =>
+                  setSelectedType(itemValue)
+                }
+              >
+                <Picker.Item label="Musique" value="Musique" />
+                <Picker.Item label="Dance" value="Dance" />
+                <Picker.Item label="Photo" value="Photo" />
+              </Picker>
+            </View>
+          </ProgressStep>
+
+          {/* LAST STEP  */}
+          <ProgressStep
+            previousBtnText={"Précedent"}
+            finishBtnText={"Valider"}
+            label={"Catégorie"}
+            onSubmit={() => submitForm()}
+            nextBtnTextStyle={buttonTextStyle}
+            previousBtnTextStyle={buttonTextStyle}
+          >
+            <View style={styles.inputs}>
+              <SignupInput
+                text="Style"
+                placeholder="Jazz"
+                function={setStyleArtFunc}
+                value={styleArt}
+              />
+              {selectedType === "Musique" && (
+                <SignupInput
+                  text="Instrument"
+                  placeholder="Piano"
+                  function={setInstrumentFunc}
+                  value={instrument}
+                />
+              )}
+              {selectedType === "Photo" && (
+                <SignupInput
+                  text="Format de photo"
+                  placeholder="Argentique"
+                  function={setFormatPhotoFunc}
+                  value={formatPhoto}
+                />
+              )}
+              <SignupInput
+                text="Prix horaire"
+                placeholder="40"
+                function={setHourlyFunc}
+                value={hourly}
+              />
+              <SignupInput
+                text="Forfait"
+                placeholder="A faire"
+                function={setPackageRateFunc}
+                value={packageRate}
+              />
+              <Picker
+                selectedValue={selectedEvent}
+                style={{ height: 30, width: "85%" }}
+                onValueChange={(itemValue, itemIndex) =>
+                  setSelectedEvent(itemValue)
+                }
+              >
+                <Picker.Item label="Mariage" value="weddings" />
+                <Picker.Item label="Cours" value="courses" />
+                <Picker.Item label="Evenement privés" value="privateEvents" />
+              </Picker>
+            </View>
+          </ProgressStep>
+        </ProgressSteps>
+      </SafeAreaView>
+    </KeyboardAvoidingView>
+  );
 }
 
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  inputs : {
-   width: '100%',
-   alignItems: 'center',
-   marginBottom: 30,
-  }
-})
-
+  inputs: {
+    width: "100%",
+    alignItems: "center",
+    marginBottom: 30,
+  },
+});

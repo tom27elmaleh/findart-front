@@ -22,7 +22,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import artist from './reducers/artist';
 
-
 const reducers = combineReducers({ artist });
 
 const persistConfig = { key: "findart", storage: AsyncStorage };
