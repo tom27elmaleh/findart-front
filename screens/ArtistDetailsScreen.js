@@ -3,10 +3,13 @@ import React from 'react'
 import FontAwesome from 'react-native-vector-icons/MaterialIcons';
 import Tags from '../utils/Tags';
 import { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 export default function ArtistDetails({route}) {
+    const navigation = useNavigation();
 // Etat mis en place pour passer de la description aux médias
     const [infos, setInfos] = useState('description');
+    // console.log("montre le token =>", route.params.token)
 
     return (
     <SafeAreaView style={styles.container}>
@@ -60,10 +63,13 @@ export default function ArtistDetails({route}) {
                 <Text style={styles.infosPrice}>tarif horaire: {route.params.rate}€</Text>
                 <Text style={styles.infosPrice}>Forfait journée : {route.params.dailyRate}€</Text>
             </View>
-            <View style={styles.buttonArea}>
 
-            </View>
         </ScrollView>
+        <View style={styles.buttonArea}>
+            <TouchableOpacity style={styles.btnRequest} onPress={() => navigation.navigate('Request', {token:route.params.token, username:route.params.username})}>
+                <Text style={styles.textBtnRequest}>Faire une demande</Text>
+            </TouchableOpacity>
+        </View>
 
 
     
@@ -137,12 +143,27 @@ const styles = StyleSheet.create({
     },
     
     buttonArea: {
-        width: "80%",
-        height: 30,
-        backgroundColor: 'beige',
+        width: "100%",
+        height: 90,
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        // backgroundColor: 'beige',
     },
     infosPrice: {
         fontSize: 18,
+    },
+    btnRequest: {
+        backgroundColor: '#2A9D8F',
+        width: '60%',
+        height: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 20
+        
+    }, 
+    textBtnRequest: {
+        color: '#ffffff',
+        fontSize: 20
     }
 
 })

@@ -19,10 +19,11 @@ export default function ExplorerScreen() {
   }, []);
   
   const artist = artistData.map((data, i) =>{
+    // console.log(data.username)
     return (
-      <ArtistCard key={i} username={data.username} city={data.address.city} type={data.type} rate={data.rate.hourly} dailyRate={data.rate.package}  style={data.style} event={data.event.name} description={data.description} link={data.link}/>
+      <ArtistCard key={i} token={data.token} username={data.username} city={data.address.city} type={data.type} rate={data.rate.hourly} dailyRate={data.rate.package}  style={data.style} event={data.event.name} description={data.description} link={data.link}/>
+      
     )
-
   }) 
 
   return (

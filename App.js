@@ -9,10 +9,11 @@ import ProfileScreen from './screens/ProfileScreen';
 import ExplorerScreen from './screens/ExplorerScreen';
 import ArtistDetailsScreen from './screens/ArtistDetailsScreen';
 import ArtistCategoryScreen from './screens/ArtistCategoryScreen';
-// import ArtistCard from './components/ArtistCard';
 import ArtistByEventScreen from './screens/ArtistByEventScreen';
+import RequestScreen from './screens/RequestScreen';
 
 import SignupScreen from './screens/SignupScreen';
+// import HomeScreen from './screens/HomeScreen';
 
 import { Provider } from 'react-redux';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
@@ -78,6 +79,8 @@ export default function App() {
        <Stack.Screen name="ArtistCategory" component={ArtistCategoryScreen}/>
        <Stack.Screen name="Signup" component={SignupScreen} />
        <Stack.Screen name="Event" component={ArtistByEventScreen} />
+       <Stack.Screen name="Request" component={RequestScreen} />
+       <Stack.Screen name="Home" component={HomeScreen}/>
 
      </Stack.Navigator>
    </NavigationContainer>
