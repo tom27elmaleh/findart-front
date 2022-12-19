@@ -1,17 +1,18 @@
 import { SafeAreaView, Text, StyleSheet, ScrollView, View } from 'react-native'
 import React, { useEffect, useState } from 'react';
 import ArtistCard from '../components/ArtistCard';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialIcons';
+import { useNavigation } from '@react-navigation/native';
 
 
 export default function ArtistCategoryScreen({route}) {
+
+  const navigation = useNavigation();
 
     const [musicData, setMusicData] = useState([]);
     const [danseData, setDanseData] = useState([]);
     const [designData, setDesignData] = useState([]);
     const [photoData, setPhotoData] = useState([]);
-
-    
-    console.log('route params type =>',route.params.type)
 
 
   useEffect(() => {
@@ -63,11 +64,6 @@ export default function ArtistCategoryScreen({route}) {
 
   }); 
 
-//   const designers = designData.map((data, k) => {
-//     return(
-//         <ArtistCard key={k} username={data.username} city={data.address.city} type={data.type} rate={data.rate.hourly} dailyRate={data.rate.package}  style={data.style} event={data.event.name} description={data.description} link={data.link}/>
-//     )
-//   })
 
   const designers = designData.map((data, k) =>{
     return (
@@ -86,7 +82,10 @@ export default function ArtistCategoryScreen({route}) {
     
     
     <SafeAreaView style={styles.container}>
+      {/* header  */}
       <View style={styles.headerContainer}>
+        {/* bouton goback */}
+        <MaterialCommunityIcons name="arrow-back" color='#ffffff' size={25} style={{marginRight: 100}} onPress={() => navigation.goBack()}/>
         <Text style={styles.header}>Results</Text>
 
       </View>
@@ -110,7 +109,9 @@ const styles = StyleSheet.create ({
   header: {
     textAlign: 'center',
     color: 'white',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontSize: 20,
+    
   },
   scrollView: {
     // alignItems: 'flex-end',
@@ -118,6 +119,9 @@ const styles = StyleSheet.create ({
   },
   headerContainer: {
     backgroundColor: '#264653',
-    padding: 30
+    padding: 30,
+    flexDirection: 'row',
+    
+    
   }
 })
