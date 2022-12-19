@@ -1,15 +1,22 @@
-import { View, Text, StyleSheet, Image, SafeAreaView, Button, KeyboardAvoidingView } from 'react-native'
-import React, { useState } from 'react'
-import ProfileButton from '../utils/ProfileButton';
-import ProfileInput from '../utils/ProfileInput';
-import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../reducers/artist';
-import LoggedProfile from '../components/LoggedProfile';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  SafeAreaView,
+  Button,
+  KeyboardAvoidingView,
+} from "react-native";
+import React, { useState } from "react";
+import ProfileButton from "../utils/ProfileButton";
+import ProfileInput from "../utils/ProfileInput";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../reducers/artist";
+import LoggedProfile from "../components/LoggedProfile";
 
-export default function ProfileScreen({navigation}) {
-
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+export default function ProfileScreen({ navigation }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const dispatch = useDispatch();
 
   const artist = useSelector((state) => state.artist.value);
@@ -27,12 +34,12 @@ export default function ProfileScreen({navigation}) {
   };
 
   const loginPressed = () => {
-    fetch('http://192.168.1.17:3000/artists/signin', {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({ 
-        email: email, 
-        password: password, 
+    fetch("http://192.168.10.187:3000/artists/signin", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: email,
+        password: password,
       }),
     })
       .then((response) => response.json())
@@ -52,8 +59,6 @@ export default function ProfileScreen({navigation}) {
       });
   };
 
-
-
   // SI PAS CONNECTER
 
   if (!artist.token) {
@@ -63,7 +68,10 @@ export default function ProfileScreen({navigation}) {
         behavior={Platform.OS === "ios" ? "padding" : "height"}
       >
         <SafeAreaView style={styles.container}>
-          <Image style={styles.logo} source={{ uri: `http://192.168.1.17:3000/assets/logo.png` }}/>
+          <Image
+            style={styles.logo}
+            source={{ uri: `http://192.168.10.187:3000/assets/logo.png` }}
+          />
           <Text style={styles.title}>Trouve ton artiste</Text>
           <View style={styles.inputs}>
             <ProfileInput
@@ -97,13 +105,9 @@ export default function ProfileScreen({navigation}) {
 
   // SI CONNECTER
 
-// SI CONNECTER 
+  // SI CONNECTER
 
-  return (
-    <LoggedProfile/>
-  )
-
-
+  return <LoggedProfile />;
 }
 
 const styles = StyleSheet.create({
@@ -118,7 +122,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: "600",
-    fontSize: "25px",
+    fontSize: 25,
     marginTop: 20,
   },
   inputs: {

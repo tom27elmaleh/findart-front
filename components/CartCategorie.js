@@ -1,4 +1,11 @@
-import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 import React from "react";
 import { useState } from "react";
 import { useFonts } from "expo-font";
@@ -7,7 +14,7 @@ export default function CartCategorie(props) {
   return (
     <View style={styles.containerImg}>
       <Image
-        source={{ uri: `http://192.168.1.17:3000/assets/${props.image}` }}
+        source={{ uri: `http://192.168.10.187:3000/assets/${props.image}` }}
         style={styles.Img}
       />
       <Text>{props.name}</Text>

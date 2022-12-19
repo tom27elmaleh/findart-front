@@ -1,8 +1,11 @@
-import { View, Image, Text, StyleSheet, ScrollView } from "react-native";
+import { View, Image, Text, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import React from "react";
 import CartCategorie from "../components/CartCategorie";
+import { useNavigation } from '@react-navigation/native'; 
 
 export default function Categorie() {
+
+  const navigation = useNavigation(); 
   const cartData = [
     {
       image: "dance.jpg",
@@ -23,12 +26,13 @@ export default function Categorie() {
   ];
 
   const card = cartData.map((data, i) => {
-    return <CartCategorie key={i} image={data.image} name={data.name} />;
+    return <TouchableOpacity key={i} onPress={() => navigation.navigate('ArtistCategory', {type: data.name})}><CartCategorie image={data.image} name={data.name} /></TouchableOpacity>;
   });
   return (
     <View style={styles.caroussel}>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         {card}
+        
       </ScrollView>
     </View>
   );

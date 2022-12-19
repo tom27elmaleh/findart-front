@@ -103,7 +103,7 @@ export default function SignupScreen({ navigation }) {
   };
 
   const submitForm = () => {
-    fetch("http://192.168.1.17:3000/artists/signup", {
+    fetch("http://192.168.10.187:3000/artists/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -181,37 +181,37 @@ export default function SignupScreen({ navigation }) {
                 placeholder="abc@gmail.com"
                 function={setEmailFunc}
                 value={email}
-              />
+              ></SignupInput>
               <SignupInput
                 text="Pseudo"
                 placeholder="username"
                 function={setUsernameFunc}
                 value={username}
-              />
+              ></SignupInput>
               <SignupInput
                 text="Pays"
                 placeholder="France"
                 function={setCountryFunc}
                 value={country}
-              />
+              ></SignupInput>
               <SignupInput
                 text="Ville"
                 placeholder="Paris"
                 function={setCityFunc}
                 value={city}
-              />
+              ></SignupInput>
               <SignupInput
                 text="Code Postal"
                 placeholder="75001"
                 function={setPostalCodeFunc}
                 value={postalCode}
-              />
+              ></SignupInput>
               <SignupInput
                 text="Mot de passe"
                 placeholder="********"
                 function={setPasswordFunc}
                 value={password}
-              />
+              ></SignupInput>
             </View>
           </ProgressStep>
 
@@ -224,25 +224,25 @@ export default function SignupScreen({ navigation }) {
             previousBtnTextStyle={buttonTextStyle}
           >
             <View style={styles.inputs}>
-              {/* <SignupInput text="Photo de profil" placeholder="a changer en import file" function={setDescriptionFunc} value={description}/> */}
+              {/* <SignupInput text="Photo de profil" placeholder="a changer en import file" function={setDescriptionFunc} value={description}></SignupInput> */}
               <SignupInput
                 text="Instagram"
                 placeholder="https://instagram.com"
                 function={setInstaFunc}
                 value={insta}
-              />
+              ></SignupInput>
               <SignupInput
                 text="Description"
                 placeholder="Ecrivez votre description"
                 function={setDescriptionFunc}
                 value={description}
-              />
+              ></SignupInput>
               <SignupInput
                 text="Lien"
                 placeholder="spotify.fr"
                 function={setLinkFunc}
                 value={link}
-              />
+              ></SignupInput>
 
               <View
                 style={{
@@ -283,14 +283,14 @@ export default function SignupScreen({ navigation }) {
                 placeholder="Jazz"
                 function={setStyleArtFunc}
                 value={styleArt}
-              />
+              ></SignupInput>
               {selectedType === "Musique" && (
                 <SignupInput
                   text="Instrument"
                   placeholder="Piano"
                   function={setInstrumentFunc}
                   value={instrument}
-                />
+                ></SignupInput>
               )}
               {selectedType === "Photo" && (
                 <SignupInput
@@ -298,20 +298,20 @@ export default function SignupScreen({ navigation }) {
                   placeholder="Argentique"
                   function={setFormatPhotoFunc}
                   value={formatPhoto}
-                />
+                ></SignupInput>
               )}
               <SignupInput
                 text="Prix horaire"
                 placeholder="40"
                 function={setHourlyFunc}
                 value={hourly}
-              />
+              ></SignupInput>
               <SignupInput
                 text="Forfait"
                 placeholder="A faire"
                 function={setPackageRateFunc}
                 value={packageRate}
-              />
+              ></SignupInput>
               <Picker
                 selectedValue={selectedEvent}
                 style={{ height: 30, width: "85%" }}
