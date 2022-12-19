@@ -1,9 +1,11 @@
-import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
+import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from "react-native";
 import React from "react";
 import { useState } from "react";
 import { useFonts } from "expo-font";
 
+
 export default function CartCategorie(props) {
+  
   return (
     <View style={styles.containerImg}>
       <Image

@@ -8,37 +8,33 @@ import { useNavigation } from "@react-navigation/native";
 export default function ArtistCard(props) {
   const navigation = useNavigation();
 
-  return (
-    <TouchableOpacity
-      style={styles.container}
-      onPress={() => navigation.navigate("ArtistDetails", props)}
-    >
-      <View style={styles.identity}>
-        <View style={styles.picName}>
-          <View>
-            <Image
-              source={{ uri: `http://192.168.1.14:3000/assets/magicien.jpg` }}
-              style={styles.iconArtist}
-            />
-          </View>
-          <View>
-            <Text style={styles.name}>{props.username}</Text>
-            <Text>{props.type}</Text>
-            <Text>Tarif: {props.rate}€/heure</Text>
-          </View>
-        </View>
-        <View style={styles.right}>
-          <View style={styles.location}>
-            <FontAwesome name="location-pin" color="orange" size={25} />
-            <Text style={styles.locationName}>{props.city}</Text>
-          </View>
-          <FontAwesome name="keyboard-arrow-right" color={"black"} size={50} />
-        </View>
-      </View>
-      <View style={styles.tags}>
-        {props.style && <Tags tagName={props.style} />}
-        {props.event && <Tags tagName={props.event} />}
-      </View>
+return (
+    <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('ArtistDetails', props)}>
+
+            <View style={styles.identity}>
+                <View style={styles.picName}>
+                    <View>
+                        <Image source={{ uri: `http://192.168.10.139:3000/assets/magicien.jpg`}} style={styles.iconArtist}/>                    
+                    </View>
+                    <View>
+                        <Text style={styles.name} >{props.username}</Text>
+                        <Text>{props.type}</Text>
+                    <Text>Tarif: {props.rate}€/heure</Text>
+                    </View>
+                </View>
+                <View style={styles.right}>
+                    <View style={styles.location}>
+                        <FontAwesome name='location-pin' color='orange' size={25}/>
+                        <Text style={styles.locationName}>{props.city}</Text>
+                    </View>
+                    <FontAwesome name='keyboard-arrow-right' color={'black'} size={50} />
+                </View>
+            </View>
+            <View style={styles.tags}>
+                { props.style && <Tags tagName={props.style}/>}
+                { props.event && <Tags tagName={props.event}/>}
+            </View>
+    
     </TouchableOpacity>
   );
 }
