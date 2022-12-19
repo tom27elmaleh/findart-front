@@ -103,7 +103,7 @@ export default function SignupScreen({ navigation }) {
   };
 
   const submitForm = () => {
-    fetch("http://192.168.10.187:3000/artists/signup", {
+    fetch("https://findart-back.vercel.app/artists/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
