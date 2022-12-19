@@ -9,7 +9,7 @@ export default function CartCategorie(props) {
   return (
     <View style={styles.containerImg}>
       <Image
-        source={{ uri: `http://192.168.1.73:3000/assets/${props.image}` }}
+        source={{ uri: `http://192.168.10.139:3000/assets/${props.image}` }}
         style={styles.Img}
       />
       <Text>{props.name}</Text>

@@ -16,7 +16,7 @@ export default function ArtistCategoryScreen({route}) {
 
   useEffect(() => {
     if(route.params.type === "Musique"){
-        fetch('http://192.168.1.73:3000/artists/music')
+        fetch('http://192.168.10.139:3000/artists/music')
         .then(response => response.json())
         .then(data => {
         //   console.log(data.musiciansData);
@@ -24,7 +24,7 @@ export default function ArtistCategoryScreen({route}) {
         });
 
     }else if(route.params.type === "Danse"){
-        fetch('http://192.168.1.73:3000/artists/danse')
+        fetch('http://192.168.10.139:3000/artists/danse')
         .then(response => response.json())
         .then(data => {
         //   console.log(data.dancersData);
@@ -32,14 +32,14 @@ export default function ArtistCategoryScreen({route}) {
         });
 
     }else if(route.params.type === "Design"){
-        fetch('http://192.168.1.73:3000/artists/design')
+        fetch('http://192.168.10.139:3000/artists/design')
         .then(response => response.json())
         .then(data => {
         //   console.log( 'les designers =>', data.designersData);
           setDesignData(data.designersData);
         });
     }else if(route.params.type === "Photo"){
-        fetch('http://192.168.1.73:3000/artists/photo')
+        fetch('http://192.168.10.139:3000/artists/photo')
         .then(response => response.json())
         .then(data => {
             // console.log('les photographes =>', data.photographsData);

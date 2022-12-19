@@ -9,7 +9,7 @@ export default function ExplorerScreen() {
 
 
   useEffect(() => {
-    fetch('http://192.168.1.73:3000/artists')
+    fetch('http://192.168.10.139:3000/artists')
     .then(response => response.json())
     .then(data => {
       // console.log(data.artistsData);

@@ -16,7 +16,7 @@ export default function RequestScreen({route}) {
     const [message, setMessage] = useState('');
     
     const submitRequest = () => {
-        fetch("http://192.168.1.73:3000/requests/sendRequest", {
+        fetch("http://192.168.10.139:3000/requests/sendRequest", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({lastname: lastname, firstname: firstname, email: email, zipcode: zipcode, city: city, text: message })}).then(response => response.json()).then((data) => {

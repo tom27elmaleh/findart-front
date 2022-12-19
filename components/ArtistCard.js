@@ -18,7 +18,7 @@ return (
             <View style={styles.identity}>
                 <View style={styles.picName}>
                     <View>
-                        <Image source={{ uri: `http://192.168.1.73:3000/assets/magicien.jpg`}} style={styles.iconArtist}/>                    
+                        <Image source={{ uri: `http://192.168.10.139:3000/assets/magicien.jpg`}} style={styles.iconArtist}/>                    
                     </View>
                     <View>
                         <Text style={styles.name} >{props.username}</Text>
