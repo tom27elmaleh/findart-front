@@ -11,16 +11,19 @@ import React from "react";
 import FontAwesome from "react-native-vector-icons/MaterialIcons";
 import Tags from "../utils/Tags";
 import { useState } from "react";
-import ArtistCard from "../components/ArtistCard";
+import { useNavigation } from "@react-navigation/native";
+
 export default function ArtistDetails({ route }) {
+  const navigation = useNavigation();
   // Etat mis en place pour passer de la description aux médias
   const [infos, setInfos] = useState("description");
+  // console.log("montre le token =>", route.params.token)
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.profilePic}>
         <Image
-          source={{ uri: `http://192.168.10.187:3000/assets/magicien.jpg` }}
+          source={{ uri: `http://192.168.10.139:3000/assets/magicien.jpg` }}
           style={styles.iconArtist}
         />
         <Text style={styles.name}>{route.params.username}</Text>
@@ -77,8 +80,20 @@ export default function ArtistDetails({ route }) {
             Forfait journée : {route.params.dailyRate}€
           </Text>
         </View>
-        <View style={styles.buttonArea}></View>
       </ScrollView>
+      <View style={styles.buttonArea}>
+        <TouchableOpacity
+          style={styles.btnRequest}
+          onPress={() =>
+            navigation.navigate("Request", {
+              token: route.params.token,
+              username: route.params.username,
+            })
+          }
+        >
+          <Text style={styles.textBtnRequest}>Faire une demande</Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 }
@@ -86,7 +101,6 @@ export default function ArtistDetails({ route }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // alignItems: 'center',
     justifyContent: "flex-start",
   },
   profilePic: {
@@ -148,11 +162,25 @@ const styles = StyleSheet.create({
   },
 
   buttonArea: {
-    width: "80%",
-    height: 30,
-    backgroundColor: "beige",
+    width: "100%",
+    height: 90,
+    alignItems: "center",
+    justifyContent: "flex-start",
+    // backgroundColor: 'beige',
   },
   infosPrice: {
     fontSize: 18,
+  },
+  btnRequest: {
+    backgroundColor: "#2A9D8F",
+    width: "60%",
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 20,
+  },
+  textBtnRequest: {
+    color: "#ffffff",
+    fontSize: 20,
   },
 });

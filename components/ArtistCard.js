@@ -45,10 +45,8 @@ export default function ArtistCard(props) {
 
 const styles = StyleSheet.create({
   container: {
-    height: 200,
     width: "100%",
     marginBottom: 10,
-    // paddingLeft: 30,
     backgroundColor: "white",
     borderRadius: 25,
     shadowColor: "#000",
@@ -58,7 +56,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.2,
     shadowRadius: 3,
-
+    paddingVertical: 10,
     elevation: 22,
   },
   identity: {

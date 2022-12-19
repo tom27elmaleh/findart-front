@@ -98,6 +98,7 @@ export default function App() {
               component={ArtistProfileScreen}
             />
             <Stack.Screen name="Event" component={ArtistByEventScreen} />
+            <Stack.Screen name="Request" component={RequestScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </PersistGate>
