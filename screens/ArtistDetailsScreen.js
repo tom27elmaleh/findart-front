@@ -15,14 +15,12 @@ import ArtistCard from "../components/ArtistCard";
 export default function ArtistDetails({ route }) {
   // Etat mis en place pour passer de la description aux médias
   const [infos, setInfos] = useState("description");
-  
-console.log(":::::",route.params.event)
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.profilePic}>
         <Image
-          source={{ uri: `http://192.168.1.14:3000/assets/magicien.jpg` }}
+          source={{ uri: `http://192.168.10.187:3000/assets/magicien.jpg` }}
           style={styles.iconArtist}
         />
         <Text style={styles.name}>{route.params.username}</Text>
@@ -65,7 +63,6 @@ console.log(":::::",route.params.event)
         <View style={styles.infos}>
           <Text style={styles.infosTitle}>Evenement</Text>
           <Tags tagName={route.params.event} />
-          
         </View>
         <View style={styles.infos}>
           <Text style={styles.infosTitle}>Style</Text>

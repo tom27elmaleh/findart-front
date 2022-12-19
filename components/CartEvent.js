@@ -16,21 +16,18 @@ export default function Event(props) {
   const [event, setEvent] = useState([]);
 
   useEffect(() => {
-    fetch("http://192.168.10.132:3000/events")
+    fetch("http://192.168.10.187:3000/events")
       .then((response) => response.json())
       .then((data) => {
         setEvent(data.allEvent);
-        console.log(data.allEvent)
       });
   }, []);
 
   const events = event.map((data, i) => {
-    console.log("props !",props)
     return (
       <TouchableOpacity
         key={i}
-        onPress={() => navigation.navigate("Event",{name:data.name} )}
-        
+        onPress={() => navigation.navigate("Event", { name: data.name })}
       >
         <CartCategorie key={i} name={data.name} image={data.image} />
       </TouchableOpacity>
