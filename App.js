@@ -55,6 +55,7 @@ export default function App() {
        <Stack.Screen name="TabNavigator" component={TabNavigator} />
        <Stack.Screen name="ArtistDetails" component={ArtistDetailsScreen}/>
        <Stack.Screen name="Signup" component={SignupScreen} />
+       <Stack.Screen name="Event" component={ArtistByEventScreen} />
      </Stack.Navigator>
    </NavigationContainer>
    </PersistGate>
