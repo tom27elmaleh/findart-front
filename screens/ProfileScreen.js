@@ -51,6 +51,7 @@ export default function ProfileScreen({ navigation }) {
               token: data.token,
               username: data.username,
               type: data.type,
+              id: data._id,
             })
           );
         } else {

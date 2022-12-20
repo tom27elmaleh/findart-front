@@ -5,13 +5,16 @@ import {
   Button,
   StyleSheet,
   Image,
+  StatusBar
 } from "react-native";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../reducers/artist";
 import ProfileRow from "./ProfileRow";
 import { useNavigation } from "@react-navigation/native";
-import Header from "../utils/Header";
+import MessageScreen from "../screens/MessageScreen"
+import FontAwesome from "react-native-vector-icons/MaterialIcons";
+import { ScrollView } from "react-native-gesture-handler";
 
 export default function LoggedProfile() {
   const dispatch = useDispatch();
@@ -27,6 +30,11 @@ export default function LoggedProfile() {
     navigation.navigate("ArtistProfile");
   };
 
+  const redirectToMessage = ()=>{
+    navigation.navigate("Messages");
+  }
+
+
   return (
     <SafeAreaView style={styles.container}>
       <Header name="Profil"/>
@@ -38,11 +46,13 @@ export default function LoggedProfile() {
           />
           <Text style={styles.username}>{artist.username}</Text>
         </View>
-        <Button title="Deconnexion" onPress={() => logoutPressed()}></Button>
+        <ScrollView  style={styles.Exit}>
+        <FontAwesome name="exit-to-app" color= "#E76F51" size={40} onPress={() => logoutPressed()}/>
+        </ScrollView>
       </View>
       <ProfileRow title="Informations profil" function={redirectToProfile} />
       <ProfileRow title="Réservations" function={() => console.log("resa")} />
-      <ProfileRow title="Messages" function={() => console.log("message")} />
+      <ProfileRow title="Messages" function={redirectToMessage} />
     </SafeAreaView>
   );
 }
@@ -50,6 +60,7 @@ export default function LoggedProfile() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
   username: {
     textTransform: "uppercase",
@@ -74,4 +85,9 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 30,
   },
+
+  Exit:{
+    position:"absolute",
+    left:"87%",
+  }
 });

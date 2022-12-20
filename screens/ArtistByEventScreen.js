@@ -51,12 +51,12 @@ export default function EventSelectedScreen({ route }) {
       <ArtistCard
         key={i}
         username={data.username}
-        city={data.city}
+        city={data.address.city}
         type={data.type}
         rate={data.rate.hourly}
         dailyRate={data.rate.package}
         style={data.style}
-        event={data.event.name}
+        event={data.event}
         description={data.description}
         link={data.link}
       />

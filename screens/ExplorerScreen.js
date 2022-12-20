@@ -1,12 +1,13 @@
-import { SafeAreaView, Text, StyleSheet, ScrollView, View } from "react-native";
+import { SafeAreaView, Text, StyleSheet, ScrollView, View,StatusBar } from "react-native";
 import React, { useEffect, useState } from "react";
 import ArtistCard from "../components/ArtistCard";
 import Header from "../utils/Header";
 
 
+
 export default function ExplorerScreen() {
   
-
+  
   const [artistData, setArtistData] = useState([]);
   
   useEffect(() => {
@@ -47,7 +48,9 @@ export default function ExplorerScreen() {
 
 const styles = StyleSheet.create({
   container: {
+    
     flex: 1,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     // justifyContent: 'center',
     // alignItems: 'flex-start',
     // backgroundColor: 'yellow',

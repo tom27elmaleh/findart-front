@@ -11,6 +11,7 @@ import ArtistDetailsScreen from "./screens/ArtistDetailsScreen";
 import ArtistCategoryScreen from "./screens/ArtistCategoryScreen";
 import ArtistByEventScreen from "./screens/ArtistByEventScreen";
 import RequestScreen from "./screens/RequestScreen";
+import MessageScreen from "./screens/MessageScreen";
 
 import SignupScreen from "./screens/SignupScreen";
 import ArtistProfileScreen from "./screens/ArtistProfileScreen";
@@ -63,11 +64,16 @@ const TabNavigator = () => {
         tabBarInactiveTintColor: "gray",
         headerShown: false,
         tabBarStyle: {
+          paddingBottom: Platform.OS === "android" ? 17 : 0,
+          height: Platform.OS === "android" ? 80 : 100,
           backgroundColor: "#264653",
-          height: 100,
+          
           borderTopEndRadius: 30,
           borderTopStartRadius: 30,
-        },
+      
+    },
+      
+    
       })}
     >
       <Tab.Screen name="Home" component={HomeScreen} />
@@ -100,6 +106,7 @@ export default function App() {
             <Stack.Screen name="Event" component={ArtistByEventScreen} />
             <Stack.Screen name="Request" component={RequestScreen} />
             <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="Messages" component={MessageScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </PersistGate>
