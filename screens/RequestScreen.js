@@ -53,7 +53,7 @@ export default function RequestScreen({ route }) {
   };
 
   const closeModal = () => {
-    navigation.navigate("Home");
+    navigation.navigate("TabNavigator");
     setModalVisible(false);
   };
 
