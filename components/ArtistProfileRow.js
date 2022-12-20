@@ -33,9 +33,7 @@ export default function ArtistProfileRow(props) {
             onChangeText={(value) => handleChange(value)}
           />
         </View>
-        {props.editable && (
-          <Icon name="edit" size={20} onPress={() => Keyboard.} />
-        )}
+        {props.editable && <Icon name="edit" size={20} />}
       </View>
     </TouchableWithoutFeedback>
   );

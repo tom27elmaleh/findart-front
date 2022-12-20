@@ -12,7 +12,8 @@ import {
 import React, { useState } from "react";
 import Categorie from "../components/Categorie";
 import CartEvent from "../components/CartEvent";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import Calendar from "react-native-vector-icons/Entypo";
+import MaterialIcon from "react-native-vector-icons/MaterialCommunityIcons";
 
 export default function HomeScreen() {
   const [keyWord, setKeyWord] = useState("");
@@ -40,11 +41,7 @@ export default function HomeScreen() {
             value={keyWord}
           />
           <TouchableOpacity onPress={() => setShowFilter(!showFilter)}>
-            <MaterialCommunityIcons
-              name="filter-variant"
-              size={30}
-              color="white"
-            />
+            <MaterialIcon name="filter-variant" size={30} color="white" />
           </TouchableOpacity>
         </View>
       </View>
@@ -52,8 +49,8 @@ export default function HomeScreen() {
         <View style={styles.modalFilter}>
           <View style={styles.inputContentLoc}>
             <View style={styles.date}>
-              <MaterialCommunityIcons
-                name="search"
+              <Calendar
+                name="calendar"
                 size={30}
                 color="white"
                 style={{ marginRight: 6 }}
@@ -66,8 +63,8 @@ export default function HomeScreen() {
               />
             </View>
             <View style={styles.loc}>
-              <MaterialCommunityIcons
-                name="search"
+              <MaterialIcon
+                name="crosshairs-gps"
                 size={30}
                 color="white"
                 style={{ marginRight: 6 }}

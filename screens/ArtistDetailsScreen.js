@@ -12,7 +12,7 @@ import FontAwesome from "react-native-vector-icons/MaterialIcons";
 import Tags from "../utils/Tags";
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import HeaderGoBack from "../utils/HeaderGoBack";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialIcons";
 
 export default function ArtistDetails({ route }) {
   const navigation = useNavigation();
@@ -38,14 +38,19 @@ export default function ArtistDetails({ route }) {
 
   var touchProps1 = {
     activeOpacity: 1,
-
     style: medias ? styles.btnPress : styles.btnNav1,
   };
 
-  // console.log("montre le token =>", route.params.token)
-
   return (
     <SafeAreaView style={styles.container}>
+      <TouchableOpacity onPress={() => navigation.goBack()}>
+        <MaterialCommunityIcons
+          name="arrow-back"
+          color="black"
+          size={35}
+          style={{ top: 20, left: 30 }}
+        />
+      </TouchableOpacity>
       <View style={styles.profilePic}>
         <Image
           source={{

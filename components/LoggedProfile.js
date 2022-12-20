@@ -36,7 +36,6 @@ export default function LoggedProfile() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header name="Profil" />
       <View style={styles.header}>
         <View style={styles.infoUser}>
           <Image

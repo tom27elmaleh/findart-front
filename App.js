@@ -64,8 +64,8 @@ const TabNavigator = () => {
         tabBarInactiveTintColor: "gray",
         headerShown: false,
         tabBarStyle: {
-          paddingBottom: Platform.OS === "android" ? 17 : 0,
-          height: Platform.OS === "android" ? 80 : 100,
+          paddingBottom: Platform.OS === "android" ? 17 : 20,
+          height: Platform.OS === "android" ? 80 : 90,
           backgroundColor: "#264653",
           borderTopEndRadius: 30,
           borderTopStartRadius: 30,

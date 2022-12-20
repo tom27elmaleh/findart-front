@@ -13,6 +13,7 @@ import ArtistProfileRow from "../components/ArtistProfileRow";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useSelector } from "react-redux";
 import ProfileButton from "../utils/ProfileButton";
+import HeaderGoBack from "../utils/HeaderGoBack";
 
 export default function ArtistProfileScreen() {
   const [username, setUsername] = useState("");
@@ -156,16 +157,11 @@ export default function ArtistProfileScreen() {
           <Text>{messageModal}</Text>
         </View>
       )}
+      <HeaderGoBack name="Informations profil" />
       <SafeAreaView style={styles.container}>
-        <View style={styles.header}>
-          <Text style={styles.title}>Informations profil</Text>
-        </View>
         <ScrollView>
           <Text style={styles.subtitle}> Informations personelles</Text>
-          {/* <View style={styles.photo}> 
-                <Text>Photo de profil</Text>
-                <Image style={styles.profilePicture} source={{ uri: `http://192.168.10.188:3000/assets/logo.png` }}/>
-            </View> */}
+
           <ArtistProfileRow
             editable={true}
             title="Pseudo"

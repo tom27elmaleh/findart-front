@@ -43,8 +43,8 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 15,
   },
   boderText: {
-    // borderColor:"black",
-    // borderWidth:1,
+    borderColor: "gray",
+    borderWidth: 0.5,
     width: "98%",
     height: "23%",
     alignItems: "center",
@@ -58,7 +58,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.27,
     shadowRadius: 4.65,
-
     elevation: 1,
   },
 });

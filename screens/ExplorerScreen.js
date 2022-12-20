@@ -39,12 +39,14 @@ export default function ExplorerScreen() {
   });
 
   return (
-    <SafeAreaView style={styles.container}>
+    <>
       <Header name="Tous les artistes" />
-      <ScrollView contentContainerStyle={styles.scrollView}>
-        {artist}
-      </ScrollView>
-    </SafeAreaView>
+      <SafeAreaView style={styles.container}>
+        <ScrollView contentContainerStyle={styles.scrollView}>
+          {artist}
+        </ScrollView>
+      </SafeAreaView>
+    </>
   );
 }
 
