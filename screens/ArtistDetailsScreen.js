@@ -12,19 +12,21 @@ import FontAwesome from "react-native-vector-icons/MaterialIcons";
 import Tags from "../utils/Tags";
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
+import HeaderGoBack from "../utils/HeaderGoBack";
 
 export default function ArtistDetails({ route }) {
   const navigation = useNavigation();
   // Etat mis en place pour passer de la description aux médias
   const [infos, setInfos] = useState("description");
-  // console.log("montre le token =>", route.params.token)
+  console.log("montre l'event =>", route.params.style)
+  
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.profilePic}>
         <Image
           source={{
-            uri: `https://findart-back.vercel.app/assets/magicien.jpg`,
+            uri: `http://192.168.10.138:3000/assets/magicien.jpg`,
           }}
           style={styles.iconArtist}
         />
@@ -68,6 +70,7 @@ export default function ArtistDetails({ route }) {
         <View style={styles.infos}>
           <Text style={styles.infosTitle}>Evenement</Text>
           <Tags tagName={route.params.event} />
+          
         </View>
         <View style={styles.infos}>
           <Text style={styles.infosTitle}>Style</Text>

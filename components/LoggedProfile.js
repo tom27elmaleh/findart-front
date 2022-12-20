@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../reducers/artist";
 import ProfileRow from "./ProfileRow";
 import { useNavigation } from "@react-navigation/native";
+import Header from "../utils/Header";
 
 export default function LoggedProfile() {
   const dispatch = useDispatch();
@@ -28,11 +29,12 @@ export default function LoggedProfile() {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Header name="Profil"/>
       <View style={styles.header}>
         <View style={styles.infoUser}>
           <Image
             style={styles.profilePicture}
-            source={{ uri: `https://findart-back.vercel.app/assets/logo.png` }}
+            source={{ uri: `http://192.168.10.138:3000/assets/logo.png` }}
           />
           <Text style={styles.username}>{artist.username}</Text>
         </View>

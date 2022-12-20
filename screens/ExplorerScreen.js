@@ -1,18 +1,19 @@
 import { SafeAreaView, Text, StyleSheet, ScrollView, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import ArtistCard from "../components/ArtistCard";
-import { useNavigation } from "@react-navigation/native";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialIcons";
+import Header from "../utils/Header";
+
 
 export default function ExplorerScreen() {
-  const navigation = useNavigation();
+  
 
   const [artistData, setArtistData] = useState([]);
-
+  
   useEffect(() => {
-    fetch("https://findart-back.vercel.app/artists")
-      .then((response) => response.json())
-      .then((data) => {
+    fetch("http://192.168.10.138:3000/artists")
+    .then((response) => response.json())
+    .then((data) => {
+        // console.log('event =>', data.style);
         setArtistData(data.artistsData);
       });
   }, []);
@@ -36,16 +37,7 @@ export default function ExplorerScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.headerContainer}>
-        <MaterialCommunityIcons
-          name="arrow-back"
-          color="#ffffff"
-          size={25}
-          style={{ marginRight: 50 }}
-          onPress={() => navigation.goBack()}
-        />
-        <Text style={styles.header}>Tous les artistes</Text>
-      </View>
+      <Header name="Tous les artistes"/>
       <ScrollView contentContainerStyle={styles.scrollView}>
         {artist}
       </ScrollView>
@@ -60,18 +52,5 @@ const styles = StyleSheet.create({
     // alignItems: 'flex-start',
     // backgroundColor: 'yellow',
   },
-  header: {
-    textAlign: "center",
-    color: "white",
-    fontWeight: "bold",
-    fontSize: 20,
-  },
-  scrollView: {
-    // alignItems: 'flex-end',
-  },
-  headerContainer: {
-    backgroundColor: "#264653",
-    padding: 30,
-    flexDirection: "row",
-  },
+
 });

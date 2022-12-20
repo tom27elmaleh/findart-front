@@ -9,19 +9,19 @@ export default function EventSelectedScreen({ route }) {
 
   useEffect(() => {
     if (route.params.name === "Mariage") {
-      fetch("https://findart-back.vercel.app/artists/mariage")
+      fetch("http://192.168.10.138:3000/artists/mariage")
         .then((response) => response.json())
         .then((data) => {
           setMariage(data.artistsData);
         });
     } else if (route.params.name === "Evènement privés") {
-      fetch("https://findart-back.vercel.app/artists/privy")
+      fetch("http://192.168.10.138:3000/artists/privy")
         .then((response) => response.json())
         .then((data) => {
           setPrivy(data.artistsData);
         });
     } else if (route.params.name === "Cours") {
-      fetch("https://findart-back.vercel.app/artists/cours")
+      fetch("http://192.168.10.138:3000/artists/cours")
         .then((response) => response.json())
         .then((data) => {
           setCours(data.artistsData);
