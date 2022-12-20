@@ -112,17 +112,7 @@ export default function ArtistCategoryScreen({ route }) {
   return (
     <SafeAreaView style={styles.container}>
       {/* header  */}
-      <View style={styles.headerContainer}>
-        {/* bouton goback */}
-        <MaterialCommunityIcons
-          name="arrow-back"
-          color="#ffffff"
-          size={25}
-          style={{ marginRight: 100 }}
-          onPress={() => navigation.goBack()}
-        />
-        <Text style={styles.header}>Results</Text>
-      </View>
+
       <ScrollView contentContainerStyle={styles.scrollView}>
         {route.params.type === "Danse" ? (
           dancers

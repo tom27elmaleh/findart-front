@@ -4,16 +4,13 @@ import {
   StyleSheet,
   ScrollView,
   View,
-  TouchableOpacity,
+  StatusBar,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import ArtistCard from "../components/ArtistCard";
-import { useNavigation } from "@react-navigation/native";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialIcons";
+import Header from "../utils/Header";
 
 export default function ExplorerScreen() {
-  const navigation = useNavigation();
-
   const [artistData, setArtistData] = useState([]);
 
   useEffect(() => {
@@ -43,16 +40,7 @@ export default function ExplorerScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.headerContainer}>
-        <MaterialCommunityIcons
-          name="arrow-back"
-          color="#ffffff"
-          size={25}
-          style={{ marginRight: 50 }}
-          onPress={() => navigation.goBack()}
-        />
-        <Text style={styles.header}>Tous les artistes</Text>
-      </View>
+      <Header name="Tous les artistes" />
       <ScrollView contentContainerStyle={styles.scrollView}>
         {artist}
       </ScrollView>
