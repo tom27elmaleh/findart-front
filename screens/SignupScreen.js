@@ -103,7 +103,7 @@ export default function SignupScreen({ navigation }) {
   };
 
   const submitForm = () => {
-    fetch("https://findart-back.vercel.app/artists/signup", {
+    fetch("http://192.168.10.188:3000/artists/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -134,6 +134,7 @@ export default function SignupScreen({ navigation }) {
               token: data.token,
               username: data.username,
               type: data.type,
+              id: data._id,
             })
           );
           navigation.navigate("TabNavigator");
@@ -174,16 +175,17 @@ export default function SignupScreen({ navigation }) {
             label="Informations personnelles"
             onNext={() => onNextStep()}
             nextBtnTextStyle={buttonTextStyle}
+            nextBtnDisabled={email && username && password ? false : true}
           >
             <View style={styles.inputs}>
               <SignupInput
-                text="Adresse mail"
+                text="Adresse mail*"
                 placeholder="abc@gmail.com"
                 function={setEmailFunc}
                 value={email}
               ></SignupInput>
               <SignupInput
-                text="Pseudo"
+                text="Pseudo*"
                 placeholder="username"
                 function={setUsernameFunc}
                 value={username}
@@ -207,7 +209,7 @@ export default function SignupScreen({ navigation }) {
                 value={postalCode}
               ></SignupInput>
               <SignupInput
-                text="Mot de passe"
+                text="Mot de passe*"
                 placeholder="********"
                 function={setPasswordFunc}
                 value={password}
@@ -217,6 +219,7 @@ export default function SignupScreen({ navigation }) {
 
           {/* SECOND STEP  */}
           <ProgressStep
+            nextBtnDisabled={description ? false : true}
             previousBtnText={"Précedent"}
             finishBtnText={"Valider"}
             label="Description"
@@ -232,7 +235,7 @@ export default function SignupScreen({ navigation }) {
                 value={insta}
               ></SignupInput>
               <SignupInput
-                text="Description"
+                text="Description*"
                 placeholder="Ecrivez votre description"
                 function={setDescriptionFunc}
                 value={description}
@@ -248,23 +251,24 @@ export default function SignupScreen({ navigation }) {
                 style={{
                   flexDirection: "row",
                   width: "85%",
-                  alignContent: "flex-start",
-                  marginTop: 10,
+
+                  alignItems: "center",
                 }}
               >
-                <Text style={{ fontSize: 17 }}>Catégorie</Text>
+                <Text style={{ fontSize: 17 }}>Catégorie : </Text>
+                <Picker
+                  itemStyle={{ height: 130 }}
+                  style={{ width: "45%" }}
+                  selectedValue={selectedType}
+                  onValueChange={(itemValue, itemIndex) =>
+                    setSelectedType(itemValue)
+                  }
+                >
+                  <Picker.Item label="Musique" value="Musique" />
+                  <Picker.Item label="Dance" value="Dance" />
+                  <Picker.Item label="Photo" value="Photo" />
+                </Picker>
               </View>
-              <Picker
-                selectedValue={selectedType}
-                style={{ height: 30, width: "85%" }}
-                onValueChange={(itemValue, itemIndex) =>
-                  setSelectedType(itemValue)
-                }
-              >
-                <Picker.Item label="Musique" value="Musique" />
-                <Picker.Item label="Dance" value="Dance" />
-                <Picker.Item label="Photo" value="Photo" />
-              </Picker>
             </View>
           </ProgressStep>
 
@@ -301,28 +305,40 @@ export default function SignupScreen({ navigation }) {
                 ></SignupInput>
               )}
               <SignupInput
-                text="Prix horaire"
+                isNum={true}
+                text="Prix horaire € / h"
                 placeholder="40"
                 function={setHourlyFunc}
                 value={hourly}
               ></SignupInput>
               <SignupInput
-                text="Forfait"
+                text="Forfait € / jour"
+                isNum={true}
                 placeholder="A faire"
                 function={setPackageRateFunc}
                 value={packageRate}
               ></SignupInput>
-              <Picker
-                selectedValue={selectedEvent}
-                style={{ height: 30, width: "85%" }}
-                onValueChange={(itemValue, itemIndex) =>
-                  setSelectedEvent(itemValue)
-                }
+              <View
+                style={{
+                  flexDirection: "row",
+                  width: "85%",
+                  alignItems: "center",
+                }}
               >
-                <Picker.Item label="Mariage" value="weddings" />
-                <Picker.Item label="Cours" value="courses" />
-                <Picker.Item label="Evenement privés" value="privateEvents" />
-              </Picker>
+                <Text style={{ fontSize: 17 }}>Catégorie : </Text>
+                <Picker
+                  selectedValue={selectedEvent}
+                  itemStyle={{ height: 130 }}
+                  style={{ width: "65%" }}
+                  onValueChange={(itemValue, itemIndex) =>
+                    setSelectedEvent(itemValue)
+                  }
+                >
+                  <Picker.Item label="Mariage" value="weddings" />
+                  <Picker.Item label="Cours" value="courses" />
+                  <Picker.Item label="Evenement privés" value="privateEvents" />
+                </Picker>
+              </View>
             </View>
           </ProgressStep>
         </ProgressSteps>

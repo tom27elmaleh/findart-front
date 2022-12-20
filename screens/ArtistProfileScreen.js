@@ -12,10 +12,9 @@ import React, { useEffect, useState } from "react";
 import ArtistProfileRow from "../components/ArtistProfileRow";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useSelector } from "react-redux";
+import ProfileButton from "../utils/ProfileButton";
 
 export default function ArtistProfileScreen() {
-  const [artist, setArtist] = useState([]);
-
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [country, setCountry] = useState("");
@@ -32,6 +31,10 @@ export default function ArtistProfileScreen() {
   const [instrument, setInstrument] = useState("");
   const [camera, setCamera] = useState("");
 
+  const [messageModal, setMessageModal] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const [disableButton, setDisableButton] = useState(true);
+
   const currentArtist = useSelector((state) => state.artist.value);
 
   useEffect(() => {
@@ -39,10 +42,11 @@ export default function ArtistProfileScreen() {
   }, []);
 
   function setData() {
-    fetch(`https://findart-back.vercel.app/artists/${currentArtist.token}`)
+    fetch(`http://192.168.10.188:3000/artists/${currentArtist.token}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.result) {
+          console.log(data.artist.rate.hourly);
           setUsername(data.artist.username);
           setEmail(data.artist.email);
           setCountry(data.artist.address.country);
@@ -103,7 +107,7 @@ export default function ArtistProfileScreen() {
   }
 
   const updateProfile = () => {
-    fetch(`https://findart-back.vercel.app/artists/${currentArtist.token}`, {
+    fetch(`http://192.168.10.188:3000/artists/${currentArtist.token}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -126,26 +130,41 @@ export default function ArtistProfileScreen() {
       .then((response) => response.json())
       .then((data) => {
         if (data.result) {
+          setMessageModal("Les informations ont bien été mis à jour");
           setData();
+          setShowModal(true);
           Keyboard.dismiss();
+        } else if (!data.result && data.error === "missing field") {
+          setMessageModal("Veuillez renseigner un pseudo et une description");
+          setShowModal(true);
         } else {
-          console.log("result false");
+          setMessageModal("Erreur de modification des informations");
+          setShowModal(true);
         }
       });
   };
 
+  const hideModal = () => {
+    setMessageModal("");
+    setShowModal(false);
+  };
+
   return (
     <KeyboardAvoidingView style={{ flex: 1 }} behavior={"padding"}>
+      {showModal && (
+        <View style={styles.modal}>
+          <Text>{messageModal}</Text>
+        </View>
+      )}
       <SafeAreaView style={styles.container}>
         <View style={styles.header}>
           <Text style={styles.title}>Informations profil</Text>
-          <Button title="Sauvegarder" onPress={() => updateProfile()}></Button>
         </View>
         <ScrollView>
           <Text style={styles.subtitle}> Informations personelles</Text>
           {/* <View style={styles.photo}> 
                 <Text>Photo de profil</Text>
-                <Image style={styles.profilePicture} source={{ uri: `http://192.168.1.17:3000/assets/logo.png` }}/>
+                <Image style={styles.profilePicture} source={{ uri: `http://192.168.10.188:3000/assets/logo.png` }}/>
             </View> */}
           <ArtistProfileRow
             editable={true}
@@ -206,15 +225,17 @@ export default function ArtistProfileScreen() {
             function={setLinkFunc}
           />
           <ArtistProfileRow
+            isNum={true}
             editable={true}
-            title="Prix horaire"
-            value={`${hourly}€ / h`}
+            title="Prix horaire € / h"
+            value={`${hourly}`}
             function={setHourlyFunc}
           />
           <ArtistProfileRow
+            isNum={true}
             editable={true}
-            title="Forfait jour"
-            value={`${packageRate}€ / jour`}
+            title="Forfait jour € / jour"
+            value={`${packageRate}`}
             function={setPackageRateFunc}
           />
           {instrument && (
@@ -242,6 +263,9 @@ export default function ArtistProfileScreen() {
             />
           )}
         </ScrollView>
+        <View style={{ alignItems: "center", width: "100%" }}>
+          <ProfileButton function={updateProfile} text="Sauvegarder" />
+        </View>
       </SafeAreaView>
     </KeyboardAvoidingView>
   );
@@ -271,8 +295,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     padding: 10,
   },
-  // photo: {
-  //     flexDirection: 'row',
-  //     alignItems: 'center',
-  // }
+  modal: {
+    position: "fixed",
+    top: "50%",
+    left: "50%",
+  },
 });

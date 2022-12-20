@@ -1,4 +1,11 @@
-import { SafeAreaView, Text, StyleSheet, ScrollView, View } from "react-native";
+import {
+  SafeAreaView,
+  Text,
+  StyleSheet,
+  ScrollView,
+  View,
+  TouchableOpacity,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import ArtistCard from "../components/ArtistCard";
 import { useNavigation } from "@react-navigation/native";
@@ -10,7 +17,7 @@ export default function ExplorerScreen() {
   const [artistData, setArtistData] = useState([]);
 
   useEffect(() => {
-    fetch("https://findart-back.vercel.app/artists")
+    fetch("http://192.168.10.188:3000/artists")
       .then((response) => response.json())
       .then((data) => {
         setArtistData(data.artistsData);
@@ -56,9 +63,6 @@ export default function ExplorerScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'flex-start',
-    // backgroundColor: 'yellow',
   },
   header: {
     textAlign: "center",
@@ -73,5 +77,19 @@ const styles = StyleSheet.create({
     backgroundColor: "#264653",
     padding: 30,
     flexDirection: "row",
+  },
+  filterButtonText: {
+    paddingVertical: 10,
+    color: "white",
+    fontSize: 17,
+    fontWeight: "600",
+  },
+  filterButton: {
+    alignItems: "center",
+    width: "60%",
+    backgroundColor: "#2A9D8F",
+    borderRadius: 10,
+    position: "sticky",
+    bottom: 60,
   },
 });

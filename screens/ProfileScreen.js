@@ -6,6 +6,8 @@ import {
   SafeAreaView,
   Button,
   KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from "react-native";
 import React, { useState } from "react";
 import ProfileButton from "../utils/ProfileButton";
@@ -17,6 +19,8 @@ import LoggedProfile from "../components/LoggedProfile";
 export default function ProfileScreen({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorLog, setErrorLog] = useState("");
+  const [showErrorLog, setShowErrorLog] = useState(false);
   const dispatch = useDispatch();
 
   const artist = useSelector((state) => state.artist.value);
@@ -34,7 +38,7 @@ export default function ProfileScreen({ navigation }) {
   };
 
   const loginPressed = () => {
-    fetch("https://findart-back.vercel.app/artists/signin", {
+    fetch("http://192.168.10.188:3000/artists/signin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -46,15 +50,22 @@ export default function ProfileScreen({ navigation }) {
       .then((data) => {
         if (data.result) {
           setPassword("");
+          setShowErrorLog(false);
           dispatch(
             login({
               token: data.token,
               username: data.username,
               type: data.type,
+              id: data._id,
             })
           );
         } else {
-          console.log("wrong id");
+          setShowErrorLog(true);
+          if (data.error === "Missing or empty fields") {
+            setErrorLog("Veuillez remplir tous les champs");
+          } else if (data.error === "User not found or wrong password") {
+            setErrorLog("Identifiants incorrectes");
+          }
         }
       });
   };
@@ -70,7 +81,7 @@ export default function ProfileScreen({ navigation }) {
         <SafeAreaView style={styles.container}>
           <Image
             style={styles.logo}
-            source={{ uri: `https://findart-back.vercel.app/assets/logo.png` }}
+            source={{ uri: `http://192.168.10.188:3000/assets/logo.png` }}
           />
           <Text style={styles.title}>Trouve ton artiste</Text>
           <View style={styles.inputs}>
@@ -86,7 +97,11 @@ export default function ProfileScreen({ navigation }) {
               function={setPasswordFunc}
               value={password}
             ></ProfileInput>
+            {showErrorLog && (
+              <Text style={{ color: "red", paddingTop: 10 }}>{errorLog}</Text>
+            )}
           </View>
+
           <View style={styles.buttons}>
             <ProfileButton
               text="Connexion"

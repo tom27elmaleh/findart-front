@@ -1,31 +1,43 @@
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from "react-native";
 import React from "react";
 import { Icon } from "@rneui/themed";
 import { TextInput } from "react-native-gesture-handler";
 
 export default function ArtistProfileRow(props) {
   let marginSeparation = props.separation ? 20 : 0;
+  let keyboardType = props.isNum ? "numeric" : "default";
 
   function handleChange(value) {
     props.function(value);
   }
 
   return (
-    <View style={[styles.container, { marginBottom: marginSeparation }]}>
-      <View style={{ maxWidth: "80%" }}>
-        <Text style={styles.title}>{props.title}</Text>
-        <TextInput
-          keyboardType="default"
-          returnKeyType="Valider"
-          multiline={true}
-          style={styles.value}
-          value={props.value}
-          editable={props.editable}
-          onChangeText={(value) => handleChange(value)}
-        />
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={[styles.container, { marginBottom: marginSeparation }]}>
+        <View style={{ maxWidth: "80%" }}>
+          <Text style={styles.title}>{props.title}</Text>
+          <TextInput
+            keyboardType={keyboardType}
+            returnKeyType={"Valider"}
+            multiline={true}
+            style={styles.value}
+            value={props.value}
+            editable={props.editable}
+            onChangeText={(value) => handleChange(value)}
+          />
+        </View>
+        {props.editable && (
+          <Icon name="edit" size={20} onPress={() => Keyboard.} />
+        )}
       </View>
-      {props.editable && <Icon name="edit" size={20} />}
-    </View>
+    </TouchableWithoutFeedback>
   );
 }
 

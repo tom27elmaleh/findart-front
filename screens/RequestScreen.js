@@ -22,7 +22,7 @@ export default function RequestScreen({ route }) {
   const [message, setMessage] = useState("");
 
   const submitRequest = () => {
-    fetch("https://findart-back.vercel.app/requests/sendRequest", {
+    fetch("http://192.168.10.188:3000/requests/sendRequest", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

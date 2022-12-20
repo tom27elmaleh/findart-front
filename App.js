@@ -65,8 +65,8 @@ const TabNavigator = () => {
         tabBarStyle: {
           backgroundColor: "#264653",
           height: 100,
-          borderTopEndRadius: 30,
-          borderTopStartRadius: 30,
+          borderTopEndRadius: 27,
+          borderTopStartRadius: 27,
         },
       })}
     >

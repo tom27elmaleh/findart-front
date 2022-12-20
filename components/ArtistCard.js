@@ -18,7 +18,7 @@ export default function ArtistCard(props) {
           <View>
             <Image
               source={{
-                uri: `https://findart-back.vercel.app/assets/magicien.jpg`,
+                uri: `http://192.168.10.188:3000/assets/magicien.jpg`,
               }}
               style={styles.iconArtist}
             />
