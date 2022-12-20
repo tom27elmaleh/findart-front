@@ -15,11 +15,14 @@ export default function CartCategorie(props) {
     <View style={styles.containerImg}>
       <Image
         source={{
-          uri: `https://findart-back.vercel.app/assets/${props.image}`,
+          uri: `http://192.168.10.154:3000/assets/${props.image}`,
         }}
         style={styles.Img}
       />
-      <Text>{props.name}</Text>
+      <View style={styles.boderText}>
+        <Text>{props.name}</Text>
+      </View>
+      
     </View>
   );
 }
@@ -32,13 +35,32 @@ const styles = StyleSheet.create({
     marginRight: 20,
     marginLeft: 10,
     borderColor: "black",
-    borderWidth: 1,
+    
   },
   Img: {
-    width: 120,
-    height: 100,
-    marginBottom: 3,
+    width: 118,
+    height: 93,
+    marginBottom: 0,
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
   },
+  boderText:{
+    // borderColor:"black",
+    // borderWidth:1,
+    width:"98%",
+    height:"23%",
+    alignItems:'center',
+    justifyContent:'center',
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+    shadowColor: "#000",
+shadowOffset: {
+	width: 0,
+	height: 3,
+},
+shadowOpacity: 0.27,
+shadowRadius: 4.65,
+
+elevation: 1,
+  }
 });

@@ -1,12 +1,13 @@
-import { SafeAreaView, Text, StyleSheet, ScrollView, View } from "react-native";
+import { SafeAreaView, Text, StyleSheet, ScrollView, View,StatusBar } from "react-native";
 import React, { useEffect, useState } from "react";
 import ArtistCard from "../components/ArtistCard";
 import { useNavigation } from "@react-navigation/native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialIcons";
 
+
 export default function ExplorerScreen() {
   const navigation = useNavigation();
-
+  
   const [artistData, setArtistData] = useState([]);
 
   useEffect(() => {
@@ -55,7 +56,9 @@ export default function ExplorerScreen() {
 
 const styles = StyleSheet.create({
   container: {
+    
     flex: 1,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     // justifyContent: 'center',
     // alignItems: 'flex-start',
     // backgroundColor: 'yellow',

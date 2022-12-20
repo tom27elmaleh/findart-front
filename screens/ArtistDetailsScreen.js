@@ -17,6 +17,34 @@ export default function ArtistDetails({ route }) {
   const navigation = useNavigation();
   // Etat mis en place pour passer de la description aux médias
   const [infos, setInfos] = useState("description");
+    const [infoIsPress,setInfoIsPress]=useState(false);
+    const [medias, setMedias]=useState(false);
+  const handleBio =()=>{
+    setInfos("description")
+    setInfoIsPress(true)
+    setMedias(false)
+    
+  }
+
+  const handleInfos=()=>{
+    setInfos("link")
+    setInfoIsPress(false)
+    setMedias(true)
+  }
+  var touchProps = {
+    activeOpacity: 1,
+    style:  infoIsPress ? styles.btnPress : styles.btnNav1,
+    
+   }
+
+   var touchProps1 = {
+    activeOpacity: 1,
+  
+        style:  medias ? styles.btnPress : styles.btnNav1,
+      
+        
+   }
+
   // console.log("montre le token =>", route.params.token)
 
   return (
@@ -41,11 +69,11 @@ export default function ArtistDetails({ route }) {
       </View>
       {/* NavTab description & links */}
       <View style={styles.navContainer}>
-        <TouchableOpacity onPress={() => setInfos("description")}>
-          <Text style={styles.btnNav}>Bio</Text>
+        <TouchableOpacity onPress={() => handleBio ()} {...touchProps}>
+          <Text style={styles.btnNav1}>Bio</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => setInfos("link")}>
-          <Text style={styles.btnNav}>Médias</Text>
+        <TouchableOpacity onPress={() => handleInfos () } {...touchProps1}>
+          <Text style={styles.btnNav2}>Médias</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.navContent}>
@@ -104,6 +132,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "flex-start",
+    
   },
   profilePic: {
     alignItems: "center",
@@ -140,17 +169,28 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   navContainer: {
-    backgroundColor: "beige",
     width: "90%",
     height: "5%",
-    margin: 20,
+    margin: 30,
     flexDirection: "row",
     justifyContent: "space-around",
   },
-  btnNav: {
-    fontSize: 30,
-    fontWeight: "bold",
+  btnNav1: {
+    fontSize: 28,
+    fontWeight: "semi-bold",
+
   },
+  btnNav2: {
+    fontSize: 28,
+    fontWeight: "semi-bold",
+  },
+
+btnPress:{
+ borderBottomWidth:1,
+ borderBottomColor:"black",
+ 
+},
+
   navContent: {
     marginLeft: 30,
     marginBottom: 10,
