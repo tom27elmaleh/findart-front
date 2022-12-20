@@ -47,7 +47,6 @@ export default function ArtistProfileScreen() {
       .then((response) => response.json())
       .then((data) => {
         if (data.result) {
-          console.log(data.artist.rate.hourly);
           setUsername(data.artist.username);
           setEmail(data.artist.email);
           setCountry(data.artist.address.country);

@@ -1,6 +1,7 @@
 import { SafeAreaView, Text, StyleSheet, ScrollView, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import ArtistCard from "../components/ArtistCard";
+import HeaderGoBack from "../utils/HeaderGoBack";
 
 export default function EventSelectedScreen({ route }) {
   const [mariage, setMariage] = useState([]);
@@ -34,7 +35,7 @@ export default function EventSelectedScreen({ route }) {
       <ArtistCard
         key={i}
         username={data.username}
-        city={data.city}
+        city={data.address.city}
         type={data.type}
         rate={data.rate.hourly}
         dailyRate={data.rate.package}
@@ -56,7 +57,7 @@ export default function EventSelectedScreen({ route }) {
         rate={data.rate.hourly}
         dailyRate={data.rate.package}
         style={data.style}
-        event={data.event}
+        event={data.event.name}
         description={data.description}
         link={data.link}
       />
@@ -68,7 +69,7 @@ export default function EventSelectedScreen({ route }) {
       <ArtistCard
         key={i}
         username={data.username}
-        city={data.city}
+        city={data.address.city}
         type={data.type}
         rate={data.rate.hourly}
         dailyRate={data.rate.package}
@@ -81,21 +82,21 @@ export default function EventSelectedScreen({ route }) {
   });
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.headerContainer}>
-        <Text style={styles.header}>Results</Text>
-      </View>
-      <ScrollView contentContainerStyle={styles.scrollView}>
-        {route.params.name === "Mariage" ? (
-          mariageEvent
-        ) : route.params.name === "Evènement privés" ? (
-          privyEvent
-        ) : route.params.name === "Cours" ? (
-          coursEvent
-        ) : (
-          <></>
-        )}
-      </ScrollView>
-    </SafeAreaView>
+    <>
+      <HeaderGoBack name={route.params.name} />
+      <SafeAreaView style={styles.container}>
+        <ScrollView contentContainerStyle={styles.scrollView}>
+          {route.params.name === "Mariage" ? (
+            mariageEvent
+          ) : route.params.name === "Evènement privés" ? (
+            privyEvent
+          ) : route.params.name === "Cours" ? (
+            coursEvent
+          ) : (
+            <></>
+          )}
+        </ScrollView>
+      </SafeAreaView>
+    </>
   );
 }

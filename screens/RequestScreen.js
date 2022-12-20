@@ -48,7 +48,7 @@ export default function RequestScreen({ route }) {
     })
       .then((response) => response.json())
       .then((data) => {});
-    // console.log(data);
+
     setModalVisible(true);
   };
 

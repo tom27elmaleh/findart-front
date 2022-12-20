@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import ArtistCard from "../components/ArtistCard";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialIcons";
 import { useNavigation } from "@react-navigation/native";
+import HeaderGoBack from "../utils/HeaderGoBack";
 
 export default function ArtistCategoryScreen({ route }) {
   const navigation = useNavigation();
@@ -110,23 +111,24 @@ export default function ArtistCategoryScreen({ route }) {
   });
 
   return (
-    <SafeAreaView style={styles.container}>
-      {/* header  */}
-
-      <ScrollView contentContainerStyle={styles.scrollView}>
-        {route.params.type === "Danse" ? (
-          dancers
-        ) : route.params.type === "Musique" ? (
-          musicians
-        ) : route.params.type === "Photo" ? (
-          photographs
-        ) : route.params.type === "Design" ? (
-          designers
-        ) : (
-          <></>
-        )}
-      </ScrollView>
-    </SafeAreaView>
+    <>
+      <HeaderGoBack name={route.params.type} />
+      <SafeAreaView style={styles.container}>
+        <ScrollView contentContainerStyle={styles.scrollView}>
+          {route.params.type === "Danse" ? (
+            dancers
+          ) : route.params.type === "Musique" ? (
+            musicians
+          ) : route.params.type === "Photo" ? (
+            photographs
+          ) : route.params.type === "Design" ? (
+            designers
+          ) : (
+            <></>
+          )}
+        </ScrollView>
+      </SafeAreaView>
+    </>
   );
 }
 

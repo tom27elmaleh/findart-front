@@ -20,7 +20,6 @@ export default function MessageScreen() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setMessage(data.messageData);
       });
   }, []);
