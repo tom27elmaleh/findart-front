@@ -43,7 +43,7 @@ export default function ArtistProfileScreen() {
   }, []);
 
   function setData() {
-    fetch(`http://192.168.10.188:3000/artists/${currentArtist.token}`)
+    fetch(`http://192.168.10.184:3000/artists/${currentArtist.token}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.result) {
@@ -107,7 +107,7 @@ export default function ArtistProfileScreen() {
   }
 
   const updateProfile = () => {
-    fetch(`http://192.168.10.188:3000/artists/${currentArtist.token}`, {
+    fetch(`http://192.168.10.184:3000/artists/${currentArtist.token}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

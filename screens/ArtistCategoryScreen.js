@@ -15,25 +15,25 @@ export default function ArtistCategoryScreen({ route }) {
 
   useEffect(() => {
     if (route.params.type === "Musique") {
-      fetch("http://192.168.10.188:3000/artists/music")
+      fetch("http://192.168.10.184:3000/artists/music")
         .then((response) => response.json())
         .then((data) => {
           setMusicData(data.musiciansData);
         });
     } else if (route.params.type === "Danse") {
-      fetch("http://192.168.10.188:3000/artists/danse")
+      fetch("http://192.168.10.184:3000/artists/danse")
         .then((response) => response.json())
         .then((data) => {
           setDanseData(data.dancersData);
         });
     } else if (route.params.type === "Design") {
-      fetch("http://192.168.10.188:3000/artists/design")
+      fetch("http://192.168.10.184:3000/artists/design")
         .then((response) => response.json())
         .then((data) => {
           setDesignData(data.designersData);
         });
     } else if (route.params.type === "Photo") {
-      fetch("http://192.168.10.188:3000/artists/photo")
+      fetch("http://192.168.10.184:3000/artists/photo")
         .then((response) => response.json())
         .then((data) => {
           setPhotoData(data.photographsData);
@@ -55,6 +55,7 @@ export default function ArtistCategoryScreen({ route }) {
         description={data.description}
         link={data.link}
         instrument={data.instrument}
+        insta={data.insta}
       />
     );
   });
@@ -72,6 +73,7 @@ export default function ArtistCategoryScreen({ route }) {
         event={data.event.name}
         description={data.description}
         link={data.link}
+        insta={data.insta}
       />
     );
   });
@@ -89,6 +91,7 @@ export default function ArtistCategoryScreen({ route }) {
         event={data.event.name}
         description={data.description}
         link={data.link}
+        insta={data.insta}
       />
     );
   });
@@ -106,6 +109,7 @@ export default function ArtistCategoryScreen({ route }) {
         event={data.event.name}
         description={data.description}
         link={data.link}
+        insta={data.insta}
       />
     );
   });

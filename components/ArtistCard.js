@@ -18,7 +18,7 @@ export default function ArtistCard(props) {
           <View>
             <Image
               source={{
-                uri: `http://192.168.10.188:3000/assets/magicien.jpg`,
+                uri: `http://192.168.10.184:3000/assets/magicien.jpg`,
               }}
               style={styles.iconArtist}
             />
@@ -74,11 +74,15 @@ const styles = StyleSheet.create({
   },
   location: {
     // backgroundColor: 'purple',
-    flexDirection: "row",
+    // flexDirection: "row",
     width: 80,
     height: 70,
-    padding: 10,
+    paddingLeft: 10,
     paddingRight: 10,
+    flexWrap: 'wrap',
+    alignItems: 'flex-end',
+    justifyContent: 'flex-start',
+
   },
   iconArtist: {
     width: 85,
@@ -91,10 +95,12 @@ const styles = StyleSheet.create({
   },
   locationName: {
     fontSize: 11,
+    textAlign: "right",
+    
   },
   right: {
     alignItems: "flex-end",
-    justifyContent: "flex-start",
+    justifyContent: "flex-end",
     paddingRight: 10,
     paddingTop: 10,
   },

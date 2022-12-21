@@ -32,7 +32,7 @@ export default function RequestScreen({ route }) {
   const [modalVisible, setModalVisible] = useState(false);
 
   const submitRequest = () => {
-    fetch("http://192.168.10.188:3000/requests/sendRequest", {
+    fetch("http://192.168.10.184:3000/requests/sendRequest", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -53,7 +53,7 @@ export default function RequestScreen({ route }) {
   };
 
   const closeModal = () => {
-    navigation.navigate("Home");
+    navigation.navigate("TabNavigator");
     setModalVisible(false);
   };
 

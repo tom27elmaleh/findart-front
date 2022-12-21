@@ -22,6 +22,7 @@ export default function ProfileInput(props) {
           style={styles.input}
           onChangeText={(value) => handleChange(value)}
           value={props.value}
+          secureTextEntry={props.secureTextEntry}
         ></TextInput>
       </View>
     </TouchableWithoutFeedback>

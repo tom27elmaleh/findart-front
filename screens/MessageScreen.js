@@ -11,7 +11,7 @@ export default function MessageScreen() {
   const artist = useSelector((state) => state.artist.value);
 
   useEffect(() => {
-    fetch("http://192.168.10.154:3000/requests/messages", {
+    fetch("http://192.168.10.184:3000/requests/messages", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

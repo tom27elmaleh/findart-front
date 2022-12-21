@@ -25,7 +25,7 @@ export default function HomeScreen() {
         <View style={styles.imageAndLogo}>
           <Image
             style={styles.logo}
-            source={{ uri: `http://192.168.10.188:3000/assets/logo.png` }}
+            source={{ uri: `http://192.168.10.184:3000/assets/logo.png` }}
           />
           <View>
             <Text style={styles.title}>FindArt'</Text>

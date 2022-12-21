@@ -25,8 +25,8 @@ export default function Messages(props) {
 
 const styles = StyleSheet.create({
   container: {
-    borderTopColor: "black",
-    borderTopWidth: 0.5,
+    borderBottomColor: "black",
+    borderBottomWidth: 0.5,
     width: "100%",
     height: 150,
     justifyContent: "space-around",

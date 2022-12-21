@@ -10,19 +10,19 @@ export default function EventSelectedScreen({ route }) {
 
   useEffect(() => {
     if (route.params.name === "Mariage") {
-      fetch("http://192.168.10.188:3000/artists/mariage")
+      fetch("http://192.168.10.184:3000/artists/mariage")
         .then((response) => response.json())
         .then((data) => {
           setMariage(data.artistsData);
         });
-    } else if (route.params.name === "Evènement privés") {
-      fetch("http://192.168.10.188:3000/artists/privy")
+    } else if (route.params.name === "Evenement privé") {
+      fetch("http://192.168.10.184:3000/artists/privy")
         .then((response) => response.json())
         .then((data) => {
           setPrivy(data.artistsData);
         });
     } else if (route.params.name === "Cours") {
-      fetch("http://192.168.10.188:3000/artists/cours")
+      fetch("http://192.168.10.184:3000/artists/cours")
         .then((response) => response.json())
         .then((data) => {
           setCours(data.artistsData);
@@ -43,6 +43,7 @@ export default function EventSelectedScreen({ route }) {
         event={data.event.name}
         description={data.description}
         link={data.link}
+        insta={data.insta}
       />
     );
   });
@@ -60,6 +61,7 @@ export default function EventSelectedScreen({ route }) {
         event={data.event.name}
         description={data.description}
         link={data.link}
+        insta={data.insta}
       />
     );
   });
@@ -77,6 +79,7 @@ export default function EventSelectedScreen({ route }) {
         event={data.event.name}
         description={data.description}
         link={data.link}
+        insta={data.insta}
       />
     );
   });
@@ -88,7 +91,7 @@ export default function EventSelectedScreen({ route }) {
         <ScrollView contentContainerStyle={styles.scrollView}>
           {route.params.name === "Mariage" ? (
             mariageEvent
-          ) : route.params.name === "Evènement privés" ? (
+          ) : route.params.name === "Evenement privé" ? (
             privyEvent
           ) : route.params.name === "Cours" ? (
             coursEvent

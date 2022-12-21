@@ -38,7 +38,7 @@ export default function ProfileScreen({ navigation }) {
   };
 
   const loginPressed = () => {
-    fetch("http://192.168.10.188:3000/artists/signin", {
+    fetch("http://192.168.10.184:3000/artists/signin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -81,7 +81,7 @@ export default function ProfileScreen({ navigation }) {
         <SafeAreaView style={styles.container}>
           <Image
             style={styles.logo}
-            source={{ uri: `http://192.168.10.188:3000/assets/logo.png` }}
+            source={{ uri: `http://192.168.10.184:3000/assets/logo.png` }}
           />
           <Text style={styles.title}>Trouve ton artiste</Text>
           <View style={styles.inputs}>
@@ -90,12 +90,14 @@ export default function ProfileScreen({ navigation }) {
               placeholder="abc@gmail.com"
               function={setEmailFunc}
               value={email}
+              secureTextEntry={false}
             ></ProfileInput>
             <ProfileInput
               text="Mot de passe"
               placeholder="********"
               function={setPasswordFunc}
               value={password}
+              secureTextEntry={true}
             ></ProfileInput>
             {showErrorLog && (
               <Text style={{ color: "red", paddingTop: 10 }}>{errorLog}</Text>

@@ -13,12 +13,13 @@ import Tags from "../utils/Tags";
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialIcons";
+import Instagram from "react-native-vector-icons/MaterialCommunityIcons"
 
 export default function ArtistDetails({ route }) {
   const navigation = useNavigation();
   // Etat mis en place pour passer de la description aux médias
   const [infos, setInfos] = useState("description");
-  const [infoIsPress, setInfoIsPress] = useState(false);
+  const [infoIsPress, setInfoIsPress] = useState(true);
   const [medias, setMedias] = useState(false);
   const handleBio = () => {
     setInfos("description");
@@ -54,7 +55,7 @@ export default function ArtistDetails({ route }) {
       <View style={styles.profilePic}>
         <Image
           source={{
-            uri: `http://192.168.10.188:3000/assets/magicien.jpg`,
+            uri: `http://192.168.10.184:3000/assets/magicien.jpg`,
           }}
           style={styles.iconArtist}
         />
@@ -79,7 +80,7 @@ export default function ArtistDetails({ route }) {
         </TouchableOpacity>
       </View>
       <View style={styles.navContent}>
-        <Text>
+        <Text style={styles.textBioMedia}>
           {infos === "description"
             ? route.params.description
             : route.params.link}
@@ -107,11 +108,17 @@ export default function ArtistDetails({ route }) {
         <View style={styles.infos}>
           <Text style={styles.infosTitle}>Tarif</Text>
           <Text style={styles.infosPrice}>
-            tarif horaire: {route.params.rate}€
+            Tarif horaire: {route.params.rate}€
           </Text>
           <Text style={styles.infosPrice}>
             Forfait journée : {route.params.dailyRate}€
           </Text>
+        <View style={styles.infos}>
+        </View>
+          <Text style={styles.infosTitle}>Instagram</Text>
+          <Text style={styles.iconInsta}>
+            <Instagram name="instagram" size={20} />
+            {route.params.insta}</Text>
         </View>
       </ScrollView>
       <View style={styles.buttonArea}>
@@ -173,7 +180,8 @@ const styles = StyleSheet.create({
   navContainer: {
     width: "90%",
     height: "5%",
-    margin: 30,
+    marginTop: 50,
+    marginBottom: 20,
     flexDirection: "row",
     justifyContent: "space-around",
   },
@@ -200,7 +208,8 @@ const styles = StyleSheet.create({
   },
   infosTitle: {
     fontSize: 20,
-    fontWeight: "bold",
+    fontWeight: "600",
+    marginBottom: 10
   },
 
   buttonArea: {
@@ -224,5 +233,8 @@ const styles = StyleSheet.create({
   textBtnRequest: {
     color: "#ffffff",
     fontSize: 20,
+  },
+  textBioMedia: {
+    marginRight: 30,
   },
 });
