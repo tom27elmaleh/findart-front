@@ -14,7 +14,7 @@ export default function ExplorerScreen() {
   const [artistData, setArtistData] = useState([]);
 
   useEffect(() => {
-    fetch("http://192.168.10.188:3000/artists")
+    fetch("https://findart-back.vercel.app/artists")
       .then((response) => response.json())
       .then((data) => {
         setArtistData(data.artistsData);

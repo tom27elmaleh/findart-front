@@ -11,7 +11,7 @@ export default function MessageScreen() {
   const artist = useSelector((state) => state.artist.value);
 
   useEffect(() => {
-    fetch("http://192.168.10.188:3000/requests/messages", {
+    fetch("https://findart-back.vercel.app/requests/messages", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

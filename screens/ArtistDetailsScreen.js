@@ -54,7 +54,7 @@ export default function ArtistDetails({ route }) {
       <View style={styles.profilePic}>
         <Image
           source={{
-            uri: `http://192.168.10.188:3000/assets/magicien.jpg`,
+            uri: `https://findart-back.vercel.app/assets/magicien.jpg`,
           }}
           style={styles.iconArtist}
         />

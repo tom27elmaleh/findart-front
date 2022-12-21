@@ -15,25 +15,25 @@ export default function ArtistCategoryScreen({ route }) {
 
   useEffect(() => {
     if (route.params.type === "Musique") {
-      fetch("http://192.168.10.188:3000/artists/music")
+      fetch("https://findart-back.vercel.app/artists/music")
         .then((response) => response.json())
         .then((data) => {
           setMusicData(data.musiciansData);
         });
     } else if (route.params.type === "Danse") {
-      fetch("http://192.168.10.188:3000/artists/danse")
+      fetch("https://findart-back.vercel.app/artists/danse")
         .then((response) => response.json())
         .then((data) => {
           setDanseData(data.dancersData);
         });
     } else if (route.params.type === "Design") {
-      fetch("http://192.168.10.188:3000/artists/design")
+      fetch("https://findart-back.vercel.app/artists/design")
         .then((response) => response.json())
         .then((data) => {
           setDesignData(data.designersData);
         });
     } else if (route.params.type === "Photo") {
-      fetch("http://192.168.10.188:3000/artists/photo")
+      fetch("https://findart-back.vercel.app/artists/photo")
         .then((response) => response.json())
         .then((data) => {
           setPhotoData(data.photographsData);

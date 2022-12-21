@@ -38,7 +38,7 @@ export default function ProfileScreen({ navigation }) {
   };
 
   const loginPressed = () => {
-    fetch("http://192.168.10.188:3000/artists/signin", {
+    fetch("https://findart-back.vercel.app/artists/signin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -81,7 +81,7 @@ export default function ProfileScreen({ navigation }) {
         <SafeAreaView style={styles.container}>
           <Image
             style={styles.logo}
-            source={{ uri: `http://192.168.10.188:3000/assets/logo.png` }}
+            source={{ uri: `https://findart-back.vercel.app/assets/logo.png` }}
           />
           <Text style={styles.title}>Trouve ton artiste</Text>
           <View style={styles.inputs}>

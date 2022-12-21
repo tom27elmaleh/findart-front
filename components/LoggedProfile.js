@@ -40,7 +40,7 @@ export default function LoggedProfile() {
         <View style={styles.infoUser}>
           <Image
             style={styles.profilePicture}
-            source={{ uri: `http://192.168.10.188:3000/assets/logo.png` }}
+            source={{ uri: `https://findart-back.vercel.app/assets/logo.png` }}
           />
           <Text style={styles.username}>{artist.username}</Text>
         </View>

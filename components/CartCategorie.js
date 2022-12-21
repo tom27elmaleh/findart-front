@@ -15,7 +15,7 @@ export default function CartCategorie(props) {
     <View style={styles.containerImg}>
       <Image
         source={{
-          uri: `http://192.168.10.188:3000/assets/${props.image}`,
+          uri: `https://findart-back.vercel.app/assets/${props.image}`,
         }}
         style={styles.Img}
       />
