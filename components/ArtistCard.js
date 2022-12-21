@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
   locationName: {
     fontSize: 11,
     textAlign: "right",
-    
+
   },
   right: {
     alignItems: "flex-end",

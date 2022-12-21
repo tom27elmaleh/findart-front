@@ -101,7 +101,6 @@ export default function App() {
             />
             <Stack.Screen name="Event" component={ArtistByEventScreen} />
             <Stack.Screen name="Request" component={RequestScreen} />
-            <Stack.Screen name="Home" component={HomeScreen} />
             <Stack.Screen name="Messages" component={MessageScreen} />
           </Stack.Navigator>
         </NavigationContainer>

@@ -13,6 +13,7 @@ import { ProgressSteps, ProgressStep } from "react-native-progress-steps";
 import { Picker } from "@react-native-picker/picker";
 import { useDispatch } from "react-redux";
 import { login } from "../reducers/artist";
+import HeaderGoBack from "../utils/HeaderGoBack";
 
 export default function SignupScreen({ navigation }) {
   const [username, setUsername] = useState("");
@@ -156,9 +157,8 @@ export default function SignupScreen({ navigation }) {
       style={{ flex: 1 }}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
+      <HeaderGoBack name="Inscription" />
       <SafeAreaView style={styles.container}>
-        <Button title="Retour" onPress={() => navigation.goBack()}></Button>
-
         <ProgressSteps
           activeStepNumColor={"#2A9D8F"}
           completedStepNumColor={"#2A9D8F"}

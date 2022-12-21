@@ -7,6 +7,8 @@ import {
   Button,
   Keyboard,
   KeyboardAvoidingView,
+  Modal,
+  TouchableOpacity,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import ArtistProfileRow from "../components/ArtistProfileRow";
@@ -151,11 +153,19 @@ export default function ArtistProfileScreen() {
 
   return (
     <KeyboardAvoidingView style={{ flex: 1 }} behavior={"padding"}>
-      {showModal && (
-        <View style={styles.modal}>
-          <Text>{messageModal}</Text>
+      <Modal visible={showModal} animationType="fade" transparent>
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text>{messageModal}</Text>
+            <TouchableOpacity
+              onPress={() => hideModal()}
+              style={styles.btnBackHome}
+            >
+              <Text style={{ color: "white" }}>Ok</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-      )}
+      </Modal>
       <HeaderGoBack name="Informations profil" />
       <SafeAreaView style={styles.container}>
         <ScrollView>
@@ -294,5 +304,33 @@ const styles = StyleSheet.create({
     position: "fixed",
     top: "50%",
     left: "50%",
+  },
+  modalView: {
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 30,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  btnBackHome: {
+    width: 200,
+    height: 50,
+    backgroundColor: "#264466",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 15,
+    borderRadius: 15,
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
