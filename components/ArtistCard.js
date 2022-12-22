@@ -75,13 +75,13 @@ const styles = StyleSheet.create({
   location: {
     // backgroundColor: 'purple',
     // flexDirection: "row",
+    postion:"relative",
     width: 80,
     height: 70,
     paddingLeft: 10,
     paddingRight: 10,
-    flexWrap: 'wrap',
-    alignItems: 'flex-end',
-    justifyContent: 'flex-start',
+    alignItems:"center",
+    flexWrap: 'nowrap',
 
   },
   iconArtist: {
