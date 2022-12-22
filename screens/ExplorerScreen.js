@@ -14,7 +14,7 @@ export default function ExplorerScreen() {
   const [artistData, setArtistData] = useState([]);
 
   useEffect(() => {
-    fetch("http://192.168.10.184:3000/artists")
+    fetch("http://192.168.10.206:3000/artists")
       .then((response) => response.json())
       .then((data) => {
         setArtistData(data.artistsData);
@@ -22,7 +22,6 @@ export default function ExplorerScreen() {
   }, []);
 
   const artist = artistData.map((data, i) => {
-    
     return (
       <ArtistCard
         key={i}

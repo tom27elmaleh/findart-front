@@ -40,7 +40,7 @@ export default function LoggedProfile() {
         <View style={styles.infoUser}>
           <Image
             style={styles.profilePicture}
-            source={{ uri: `http://192.168.10.184:3000/assets/logo.png` }}
+            source={{ uri: `http://192.168.10.206:3000/assets/logo.png` }}
           />
           <Text style={styles.username}>{artist.username}</Text>
         </View>
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     paddingLeft: 10,
     marginTop: 15,
-    marginRight: 100
+    marginRight: 100,
   },
   profilePicture: {
     height: 60,

@@ -13,7 +13,7 @@ import Tags from "../utils/Tags";
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialIcons";
-import Instagram from "react-native-vector-icons/MaterialCommunityIcons"
+import Instagram from "react-native-vector-icons/MaterialCommunityIcons";
 
 export default function ArtistDetails({ route }) {
   const navigation = useNavigation();
@@ -55,7 +55,7 @@ export default function ArtistDetails({ route }) {
       <View style={styles.profilePic}>
         <Image
           source={{
-            uri: `http://192.168.10.184:3000/assets/magicien.jpg`,
+            uri: `http://192.168.10.206:3000/assets/magicien.jpg`,
           }}
           style={styles.iconArtist}
         />
@@ -113,12 +113,12 @@ export default function ArtistDetails({ route }) {
           <Text style={styles.infosPrice}>
             Forfait journée : {route.params.dailyRate}€
           </Text>
-        <View style={styles.infos}>
-        </View>
+          <View style={styles.infos}></View>
           <Text style={styles.infosTitle}>Instagram</Text>
           <Text style={styles.iconInsta}>
             <Instagram name="instagram" size={20} />
-            {route.params.insta}</Text>
+            {route.params.insta}
+          </Text>
         </View>
       </ScrollView>
       <View style={styles.buttonArea}>
@@ -209,7 +209,7 @@ const styles = StyleSheet.create({
   infosTitle: {
     fontSize: 20,
     fontWeight: "600",
-    marginBottom: 10
+    marginBottom: 10,
   },
 
   buttonArea: {

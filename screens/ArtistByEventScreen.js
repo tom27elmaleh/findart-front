@@ -10,28 +10,19 @@ export default function EventSelectedScreen({ route }) {
 
   useEffect(() => {
     if (route.params.name === "Mariage") {
-      fetch("http://192.168.10.184:3000/artists/mariage")
+      fetch("http://192.168.10.206:3000/artists/mariage")
         .then((response) => response.json())
         .then((data) => {
           setMariage(data.artistsData);
         });
-<<<<<<< HEAD
     } else if (route.params.name === "Evenement privé") {
-      fetch("http://192.168.10.184:3000/artists/privy")
-=======
-    } else if (route.params.name === "Evènement privés") {
-      fetch("https://findart-back.vercel.app/artists/privy")
->>>>>>> a48c67da4a01b5ab3c7b190e68954f8fc4b105bf
+      fetch("http://192.168.10.206:3000/artists/privy")
         .then((response) => response.json())
         .then((data) => {
           setPrivy(data.artistsData);
         });
     } else if (route.params.name === "Cours") {
-<<<<<<< HEAD
-      fetch("http://192.168.10.184:3000/artists/cours")
-=======
-      fetch("https://findart-back.vercel.app/artists/cours")
->>>>>>> a48c67da4a01b5ab3c7b190e68954f8fc4b105bf
+      fetch("http://192.168.10.206:3000/artists/cours")
         .then((response) => response.json())
         .then((data) => {
           setCours(data.artistsData);
