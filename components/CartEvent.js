@@ -16,7 +16,7 @@ export default function Event(props) {
   const [event, setEvent] = useState([]);
 
   useEffect(() => {
-    fetch("http://192.168.10.184:3000/events")
+    fetch("http://192.168.10.206:3000/events")
       .then((response) => response.json())
       .then((data) => {
         setEvent(data.allEvent);

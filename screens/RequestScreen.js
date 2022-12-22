@@ -11,7 +11,7 @@ import {
   Keyboard,
   Platform,
 } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import DateTimePicker from "@react-native-community/datetimepicker";
@@ -28,11 +28,22 @@ export default function RequestScreen({ route }) {
   const [date, setDate] = useState(new Date());
   const [displaymode, setMode] = useState("date");
   const [message, setMessage] = useState("");
+  const [idArtist, setIdArtist] = useState("");
 
   const [modalVisible, setModalVisible] = useState(false);
 
+  useEffect(() => {
+    fetch(
+      `http://192.168.10.206:3000/artists/username/${route.params.username}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setIdArtist(data.artist._id);
+      });
+  }, []);
+
   const submitRequest = () => {
-    fetch("http://192.168.10.184:3000/requests/sendRequest", {
+    fetch("http://192.168.10.206:3000/requests/sendRequest", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -44,6 +55,7 @@ export default function RequestScreen({ route }) {
         city: city,
         date: date,
         text: message,
+        artist: idArtist,
       }),
     })
       .then((response) => response.json())
