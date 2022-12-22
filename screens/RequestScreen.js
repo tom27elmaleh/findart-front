@@ -16,6 +16,7 @@ import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import HeaderGoBack from "../utils/HeaderGoBack";
+import { useSelector } from "react-redux";
 
 export default function RequestScreen({ route }) {
   const navigation = useNavigation();
@@ -31,6 +32,8 @@ export default function RequestScreen({ route }) {
 
   const [modalVisible, setModalVisible] = useState(false);
 
+  const currentArtist = useSelector((state) => state.artist.value);
+
   const submitRequest = () => {
     fetch("http://192.168.10.184:3000/requests/sendRequest", {
       method: "POST",
@@ -44,6 +47,7 @@ export default function RequestScreen({ route }) {
         city: city,
         date: date,
         text: message,
+        artist: currentArtist.id,
       }),
     })
       .then((response) => response.json())
